@@ -1,0 +1,21 @@
+package com.pfe.main.entity;
+
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+
+import com.example.main.model.JwtUser;
+
+@Entity
+public class Employe extends JwtUser{
+
+	
+
+public Employe() {super.setRole("Employe");}
+	@OneToMany
+	private List<DemandeVoiture> listDemandeVoiture;
+
+
+	
+}

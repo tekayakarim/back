@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aop-reference-model>
+<aop-project name="PlateformeIntranet"/>
+<aop-project name="spring-boot-spring-security-jwt-authentication"/>
+<aop-project name="PlateformeIntranet1"/>
+</aop-reference-model>

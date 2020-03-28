@@ -1,0 +1,12 @@
+package com.example.main.repositories;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.example.main.model.JwtUser;
+
+public interface JwtUserRepository extends JpaRepository<JwtUser, Long> {
+
+	JwtUser findByCin(String cin);
+	JwtUser findByUserName(String userName);
+	
+}

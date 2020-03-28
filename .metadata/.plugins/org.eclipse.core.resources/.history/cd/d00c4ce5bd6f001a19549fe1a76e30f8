@@ -1,0 +1,31 @@
+package com.pfe.main.security.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.bezkoder.springjwt.models.User;
+import com.bezkoder.springjwt.repository.UserRepository;
+import com.pfe.main.model.JwtUser;
+import com.pfe.main.model.JwtUserDetails;
+import com.pfe.main.repository.JwtUserRepository;
+
+@Service
+public class UserDetailsServiceImpl implements UserDetailsService {
+	@Autowired
+	JwtUserRepository jwtUserRepository;
+
+	@Override
+	@Transactional
+	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+		JwtUser user = jwtUserRepository.findByUsername(userName)
+				.orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + userName));
+
+		return JwtUserDetails.build(user);
+	}
+
+}

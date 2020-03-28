@@ -1,0 +1,11 @@
+package com.pfe.main.service;
+
+import java.util.List;
+
+import com.example.main.entities.Employe;
+
+public interface EmployeService {
+public List<Employe> getEmploye();
+public String addEmploye(Employe emp);
+public boolean verifEmployeByCin(Employe emp);
+}

@@ -1,0 +1,18 @@
+package com.example.main.entities;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+@Entity
+public class DemandeDocument {
+
+	@Id
+	@GeneratedValue
+	private Long id;
+	@OneToOne
+	private Employe emp;
+	private String nom;
+	private String prenom;
+}

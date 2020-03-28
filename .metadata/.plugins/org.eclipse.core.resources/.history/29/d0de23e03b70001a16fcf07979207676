@@ -1,0 +1,7 @@
+package com.pfe.main.service;
+
+import com.example.main.entities.DemandeDocument;
+
+public interface DemandeDocumentService {
+public String CreateDemande(DemandeDocument demandeDocument);
+}

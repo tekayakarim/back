@@ -1,0 +1,32 @@
+package com.pfe.main.serviceImpl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.main.entities.DemandeDocument;
+import com.example.main.entities.Employe;
+import com.example.main.repositories.DemandeDocumentRepository;
+import com.example.main.repositories.EmployeRepository;
+import com.example.main.service.DemandeDocumentService;
+@Service
+public class DemandeDocumentServiceImpl implements DemandeDocumentService {
+
+	@Autowired
+	DemandeDocumentRepository demandeDocumentRepository;
+	@Autowired
+	EmployeRepository employeRepository;
+	@Override
+	public String CreateDemande(DemandeDocument demandeDocument) {
+		
+		try {
+			Employe emp = employeRepository.findByNom(demandeDocument.getEmp().getNom());
+			demandeDocument.setEmp(emp);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		if(demandeDocumentRepository.save(demandeDocument)!=null)
+			return "success";
+		return "Fail";
+	}
+
+}

@@ -1,0 +1,23 @@
+package com.pfe.main.entity;
+
+import java.util.List;
+
+
+
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import com.pfe.main.model.JwtUser;
+
+@Entity
+public class ChefPark extends JwtUser{
+
+
+public ChefPark() {super.setRole("ChefPark");}
+	@OneToMany
+	private List<DemandeVoiture> listDemandeVoiture;
+	
+	@OneToMany
+	private List<Voiture> listVoiture;
+	
+	
+}
