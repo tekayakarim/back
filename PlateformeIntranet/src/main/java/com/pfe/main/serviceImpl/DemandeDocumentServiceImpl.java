@@ -1,5 +1,6 @@
 package com.pfe.main.serviceImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,6 +75,21 @@ public class DemandeDocumentServiceImpl implements DemandeDocumentService {
 			e.printStackTrace();
 		}
 		return "fail";
+	} 
+	@Override
+	public List<DemandeDocument> getAllDemandeByEmploye(String userName) {
+		//liste vide de documents
+		ArrayList<DemandeDocument> lstDocument=new ArrayList<DemandeDocument>();
+		try {
+			Employe emp=employeRepository.findByUserName(userName);
+			for(DemandeDocument dem:this.getAllDemande()) {
+				if(dem.getEmp().equals(emp))
+					lstDocument.add(dem);
+			}//end for
+		} //end try
+		catch (Exception e) {e.printStackTrace();}
+		
+		return lstDocument;
 	}
 	
 

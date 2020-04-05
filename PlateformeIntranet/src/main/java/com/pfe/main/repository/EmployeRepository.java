@@ -9,4 +9,5 @@ import com.pfe.main.entity.Employe;
 public interface EmployeRepository extends JpaRepository<Employe,Long> {
 Employe findByCin(String cin);
 Employe findByNom(String nom);
-}
+Employe findByUserName(String userName);
+} 

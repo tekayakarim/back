@@ -21,7 +21,7 @@ public class TestController {
 	public String userAccess() {
 		return "User Content.";
 	}
-
+ 
 	@GetMapping("/chef")
 	@PreAuthorize("hasRole('CHEFPARK')")
 	public String moderatorAccess() {

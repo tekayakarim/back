@@ -10,4 +10,5 @@ public DemandeDocument getDemande(Long id);
 public String updateDemande(DemandeDocument demandeDocument);
 public List<DemandeDocument> getAllDemande();
 public String deleteDemande(Long id);
+public List<DemandeDocument> getAllDemandeByEmploye(String userName); 
 }

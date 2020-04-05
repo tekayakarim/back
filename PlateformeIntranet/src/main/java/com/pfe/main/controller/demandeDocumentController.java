@@ -24,7 +24,7 @@ public class demandeDocumentController {
 	@Autowired
 	DemandeDocumentService demandeDocumentService;
 	
-	@PostMapping("/create")
+	@PostMapping("/add")
 	@PreAuthorize(" hasRole('EMPLOYE') ")
 	public String create(@RequestBody DemandeDocument demandeDocument) {
 		return demandeDocumentService.CreateDemande(demandeDocument);
@@ -45,4 +45,9 @@ public class demandeDocumentController {
 	public String delete(@RequestParam long id) {
 		return demandeDocumentService.deleteDemande(id);
 	}
+	@GetMapping("/getByUserName")
+	@PreAuthorize("#userName == authentication.principal.username")
+	public List<DemandeDocument> get(@RequestParam String userName) {
+	return 	demandeDocumentService.getAllDemandeByEmploye(userName);
+	} 
 }
