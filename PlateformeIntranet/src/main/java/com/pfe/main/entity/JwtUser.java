@@ -4,6 +4,7 @@ import java.util.HashSet;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -25,7 +26,7 @@ public class JwtUser {
 	@Size(max = 20)
     private String userName;
 	
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(	name = "user_roles", 
 				joinColumns = @JoinColumn(name = "user_id"), 
 				inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -36,10 +37,15 @@ public class JwtUser {
     @NotBlank
  private String password;
 
-	public JwtUser(@NotBlank @Size(max = 20) String userName, String cin, @NotBlank String password) {
+
+public JwtUser(@NotBlank @Size(max = 20) String userName,
+		String cin, String nom, String prenom,
+			@NotBlank String password) {
 		super();
 		this.userName = userName;
 		this.cin = cin;
+		this.nom = nom;
+		this.prenom = prenom;
 		this.password = password;
 	}
 public JwtUser() {

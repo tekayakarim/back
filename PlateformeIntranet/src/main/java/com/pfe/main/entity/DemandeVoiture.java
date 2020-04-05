@@ -10,7 +10,7 @@ public class DemandeVoiture {
 
 @Id
 @GeneratedValue
-private Long id;
+private long id;
 @OneToOne
 private Employe emp;
 }

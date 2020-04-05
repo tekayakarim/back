@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/api/test")
+@RequestMapping("/main")
 public class TestController {
 	@GetMapping("/all")
 	public String allAccess() {
@@ -22,10 +22,10 @@ public class TestController {
 		return "User Content.";
 	}
 
-	@GetMapping("/mod")
-	@PreAuthorize("hasRole('MODERATOR')")
+	@GetMapping("/chef")
+	@PreAuthorize("hasRole('CHEFPARK')")
 	public String moderatorAccess() {
-		return "Moderator Board.";
+		return "Chef park Board.";
 	}
 
 	@GetMapping("/admin")

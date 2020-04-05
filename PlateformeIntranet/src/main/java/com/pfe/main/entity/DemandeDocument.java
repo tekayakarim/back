@@ -10,11 +10,11 @@ public class DemandeDocument {
 
 	@Id
 	@GeneratedValue
-	private Long id;
-	@OneToOne
-	private Employe emp;
+	private long id;
 	private String describtion;
 	private String type;
+	@OneToOne
+	private Employe emp;
 	public Long getId() {
 		return id;
 	}

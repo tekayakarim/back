@@ -13,6 +13,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -24,6 +25,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.pfe.main.entity.AgentDAAF;
+import com.pfe.main.entity.ChefHierarchique;
+import com.pfe.main.entity.ChefPark;
+import com.pfe.main.entity.Employe;
 import com.pfe.main.entity.JwtRole;
 import com.pfe.main.entity.JwtUser;
 import com.pfe.main.model.JwtERole;
@@ -37,18 +42,18 @@ import com.pfe.main.repository.JwtUserRepository;
 import com.pfe.main.security.JwtUtils;
 
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/auth")
 public class AuthController {
 	@Autowired
 	AuthenticationManager authenticationManager;
 
 	@Autowired
-	JwtUserRepository userRepository;
+	JwtUserRepository jwtUserRepository;
 
 	@Autowired
-	JwtRoleRepository roleRepository;
+	JwtRoleRepository jwtRoleRepository;
 
 	@Autowired
 	PasswordEncoder encoder;
@@ -78,60 +83,62 @@ public class AuthController {
 
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser( @RequestBody SignupRequest signUpRequest) {
-		if (userRepository.existsByUserName(signUpRequest.getUserName())) {
+		if (jwtUserRepository.existsByUserName(signUpRequest.getUserName())) {
 			return ResponseEntity
 					.badRequest()
 					.body(new MessageResponse("Error: Username is already taken!"));
 		}
 
-		JwtUser user = new JwtUser(signUpRequest.getUserName(), 
-							 signUpRequest.getCin(),
-							 encoder.encode(signUpRequest.getPassword()));
+	 JwtUser user=null;
 
-		Set<String> strRoles = signUpRequest.getRole();
+		String strRole = signUpRequest.getRole();
 		Set<JwtRole> roles = new HashSet<>();
-
-		if (strRoles == null) {
-			JwtRole employeRole = roleRepository.findByName(JwtERole.ROLE_EMPLOYE)
+		if (strRole == null || strRole.toLowerCase().equals("employe")) {
+			user=new Employe();
+			JwtRole employeRole = jwtRoleRepository.findByName(JwtERole.ROLE_EMPLOYE)
 					.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 			roles.add(employeRole);
 		} else {
-			strRoles.forEach(role -> {
-				switch (role) {
-				case "chefpark":
-					JwtRole chefparkRole = roleRepository.findByName(JwtERole.ROLE_CHEFPARK)
+			switch (strRole.toLowerCase()) {
+				case "chef park":	
+					JwtRole chefparkRole = jwtRoleRepository.findByName(JwtERole.ROLE_CHEFPARK)
 							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 					roles.add(chefparkRole);
-
+					user=new ChefPark();
 					break;
-				case "chefhierarchique":
-					JwtRole chefhierarchiqueRole = roleRepository.findByName(JwtERole.ROLE_CHEFHIERARCHIQUE)
+				case "chef hierarchique":
+					JwtRole chefhierarchiqueRole = jwtRoleRepository.findByName(JwtERole.ROLE_CHEFHIERARCHIQUE)
 							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 					roles.add(chefhierarchiqueRole);
-
+					user=new ChefHierarchique();
 					break;
 				case "agentDAAF":
-					JwtRole agentDAAFRole = roleRepository.findByName(JwtERole.ROLE_AGENTDAAF)
+					JwtRole agentDAAFRole = jwtRoleRepository.findByName(JwtERole.ROLE_AGENTDAAF)
 							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 					roles.add(agentDAAFRole);
-
+					user=new AgentDAAF();
 					break;
 				case "admin":
-					JwtRole adminRole = roleRepository.findByName(JwtERole.ROLE_ADMIN)
+					JwtRole adminRole = jwtRoleRepository.findByName(JwtERole.ROLE_ADMIN)
 							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 					roles.add(adminRole);
-
+					user=new JwtUser();
 					break;
 				default:
-					JwtRole employeRole = roleRepository.findByName(JwtERole.ROLE_EMPLOYE)
+					JwtRole employeRole = jwtRoleRepository.findByName(JwtERole.ROLE_EMPLOYE)
 							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 					roles.add(employeRole);
+					
 				}
-			});
-		}
-
+			}
+		user.setUserName(signUpRequest.getUserName());
+		user.setCin(signUpRequest.getCin());
+		user.setNom(signUpRequest.getNom());
+		user.setPrenom(signUpRequest.getPrenom());
+		user.setPassword(
+		 encoder.encode(signUpRequest.getPassword()));
 		user.setRoles(roles);
-		userRepository.save(user);
+		jwtUserRepository.save(user);
 
 		return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
 	}
