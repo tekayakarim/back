@@ -46,7 +46,7 @@ public class demandeDocumentController {
 	public String delete(@RequestParam long id) {
 		return demandeDocumentService.deleteDemande(id);
 	}
-	@GetMapping("/getByUserName")
+	@GetMapping("/getByCurrentUser")
 	//@PreAuthorize("#userName == authentication.principal.username")
 	public List<DemandeDocument> get(@RequestParam String userName) {
 	return 	demandeDocumentService.getAllDemandeByEmploye(userName);

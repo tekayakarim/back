@@ -11,7 +11,7 @@ public class DemandeDocument {
 	@Id
 	@GeneratedValue
 	private long id;
-	private String describtion;
+	private String description;
 	private String type;
 	@OneToOne
 	private Employe emp;
@@ -27,11 +27,12 @@ public class DemandeDocument {
 	public void setEmp(Employe emp) {
 		this.emp = emp;
 	}
-	public String getDescribtion() {
-		return describtion;
+
+	public String getDescription() {
+		return description;
 	}
-	public void setDescribtion(String describtion) {
-		this.describtion = describtion;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	public String getType() {
 		return type;
