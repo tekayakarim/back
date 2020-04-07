@@ -17,4 +17,5 @@ public interface JwtUserRepository extends JpaRepository<JwtUser, Long> {
 
 	Boolean existsByUserName(String userName);
 	Optional<JwtUser> findByUserName(String userName);
+
 }

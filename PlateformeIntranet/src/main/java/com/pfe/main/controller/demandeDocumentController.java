@@ -2,6 +2,8 @@ package com.pfe.main.controller;
 
 import java.util.List;
 
+import javax.annotation.security.RolesAllowed;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,8 +26,7 @@ public class demandeDocumentController {
 	@Autowired
 	DemandeDocumentService demandeDocumentService;
 	
-	@PostMapping("/add")
-	@PreAuthorize(" hasRole('EMPLOYE') ")
+	@PostMapping("/add")  
 	public String create(@RequestBody DemandeDocument demandeDocument) {
 		return demandeDocumentService.CreateDemande(demandeDocument);
 	}
@@ -46,7 +47,7 @@ public class demandeDocumentController {
 		return demandeDocumentService.deleteDemande(id);
 	}
 	@GetMapping("/getByUserName")
-	@PreAuthorize("#userName == authentication.principal.username")
+	//@PreAuthorize("#userName == authentication.principal.username")
 	public List<DemandeDocument> get(@RequestParam String userName) {
 	return 	demandeDocumentService.getAllDemandeByEmploye(userName);
 	} 

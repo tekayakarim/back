@@ -27,9 +27,12 @@ public class DemandeDocumentServiceImpl implements DemandeDocumentService {
 		
 		try {
 			Employe emp = employeRepository.findByNom(demandeDocument.getEmp().getNom());
+			if(emp!=null) {
 			demandeDocument.setEmp(emp);
 			if(demandeDocumentRepository.save(demandeDocument)!=null)
 				return "success";
+			}//end if
+			else {return "employe not found";}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -79,17 +82,23 @@ public class DemandeDocumentServiceImpl implements DemandeDocumentService {
 	@Override
 	public List<DemandeDocument> getAllDemandeByEmploye(String userName) {
 		//liste vide de documents
-		ArrayList<DemandeDocument> lstDocument=new ArrayList<DemandeDocument>();
+		ArrayList<DemandeDocument> lstDocumentVide=new ArrayList<DemandeDocument>();
+		//liste de tout les documents
+		List<DemandeDocument> lstDocument=this.getAllDemande();
 		try {
 			Employe emp=employeRepository.findByUserName(userName);
-			for(DemandeDocument dem:this.getAllDemande()) {
+			
+			if(emp!=null) {
+			
+			for(DemandeDocument dem:lstDocument) {
 				if(dem.getEmp().equals(emp))
-					lstDocument.add(dem);
+					lstDocumentVide.add(dem);
 			}//end for
+			}//end if
 		} //end try
-		catch (Exception e) {e.printStackTrace();}
+		catch (Exception e) { e.printStackTrace();}
 		
-		return lstDocument;
+		return lstDocumentVide;
 	}
 	
 
