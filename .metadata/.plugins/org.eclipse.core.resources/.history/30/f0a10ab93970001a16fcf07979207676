@@ -1,7 +1,0 @@
-package com.pfe.main.model;
-
-public enum JwtERole {
-	ROLE_USER,
-    ROLE_MODERATOR,
-    ROLE_ADMIN
-}

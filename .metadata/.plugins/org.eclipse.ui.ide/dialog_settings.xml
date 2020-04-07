@@ -109,6 +109,7 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\abdel\Desktop\PFE\one day\back2\back"/>
 			<item value="C:\Users\abdel\Documents\GitHub\spring-boot-spring-security-jwt-authentication"/>
 		</list>
 	</section>
