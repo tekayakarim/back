@@ -1,7 +1,5 @@
 package com.pfe.main.model;
 
-import java.util.Set;
-
 import javax.validation.constraints.*;
  
 public class SignupRequest {
@@ -12,8 +10,9 @@ public class SignupRequest {
     private String role; 
     private String nom;
     private String prenom;
-    
-    public String getNom() {
+   private String chefHiercharchiqueCin;
+   
+	public String getNom() {
 		return nom;
 	}
 
@@ -67,6 +66,14 @@ public class SignupRequest {
 
 	public void setRole(String role) {
 		this.role = role;
+	}
+
+	public String getChefHiercharchiqueCin() {
+		return chefHiercharchiqueCin;
+	}
+
+	public void setChefHiercharchiqueCin(String chefHiercharchiqueCin) {
+		this.chefHiercharchiqueCin = chefHiercharchiqueCin;
 	}
     
 

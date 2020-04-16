@@ -13,6 +13,7 @@ public class DemandeDocument {
 	private long id;
 	private String description;
 	private String type;
+	private String statut;
 	@OneToOne
 	private Employe emp;
 	public Long getId() {
@@ -28,6 +29,12 @@ public class DemandeDocument {
 		this.emp = emp;
 	}
 
+	public String getStatut() {
+		return statut;
+	}
+	public void setStatut(String statut) {
+		this.statut = statut;
+	}
 	public String getDescription() {
 		return description;
 	}

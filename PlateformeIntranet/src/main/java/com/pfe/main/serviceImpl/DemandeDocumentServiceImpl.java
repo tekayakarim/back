@@ -29,6 +29,7 @@ public class DemandeDocumentServiceImpl implements DemandeDocumentService {
 			Employe emp = employeRepository.findByNom(demandeDocument.getEmp().getNom());
 			if(emp!=null) {
 			demandeDocument.setEmp(emp);
+			demandeDocument.setStatut("new");
 			if(demandeDocumentRepository.save(demandeDocument)!=null)
 				return "success";
 			}//end if

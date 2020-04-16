@@ -36,6 +36,7 @@ import com.pfe.main.model.JwtUserDetails;
 import com.pfe.main.model.LoginRequest;
 import com.pfe.main.model.MessageResponse;
 import com.pfe.main.model.SignupRequest;
+import com.pfe.main.repository.ChefHierarchiqueRepository;
 import com.pfe.main.repository.JwtRoleRepository;
 import com.pfe.main.repository.JwtUserRepository;
 import com.pfe.main.security.JwtUtils;
@@ -50,6 +51,9 @@ public class AuthController {
 
 	@Autowired
 	JwtUserRepository jwtUserRepository;
+	
+	@Autowired
+	ChefHierarchiqueRepository chefHierarchiqueRepository;
 
 	@Autowired
 	JwtRoleRepository jwtRoleRepository;
@@ -93,10 +97,12 @@ public class AuthController {
 		String strRole = signUpRequest.getRole();
 		Set<JwtRole> roles = new HashSet<>();
 		if (strRole == null || strRole.toLowerCase().equals("employe")) {
-			user=new Employe();
+			user=new Employe(chefHierarchiqueRepository
+					.findByCin(signUpRequest.getChefHiercharchiqueCin()));
 			JwtRole employeRole = jwtRoleRepository.findByName(JwtERole.ROLE_EMPLOYE)
 					.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 			roles.add(employeRole);
+			
 		} else {
 			switch (strRole.toLowerCase()) {
 				case "chef park":	
@@ -127,6 +133,8 @@ public class AuthController {
 					JwtRole employeRole = jwtRoleRepository.findByName(JwtERole.ROLE_EMPLOYE)
 							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 					roles.add(employeRole);
+					user=new Employe(chefHierarchiqueRepository
+							.findByCin(signUpRequest.getChefHiercharchiqueCin()));
 					
 				}
 			}
