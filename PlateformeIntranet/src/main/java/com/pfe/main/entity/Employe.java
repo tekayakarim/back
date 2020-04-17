@@ -13,15 +13,15 @@ import javax.validation.constraints.Size;
 @Entity
 public class Employe extends JwtUser{
 
-	@OneToOne
-	private ChefHierarchique chefHierarchique;
+	private String chefHierarchiqueCin;
 	@OneToMany
 	private List<DemandeVoiture> listDemandeVoiture;
-	public ChefHierarchique getChefHierarchique() {
-		return chefHierarchique;
+
+	public String getChefHierarchiqueCin() {
+		return chefHierarchiqueCin;
 	}
-	public void setChefHierarchique(ChefHierarchique chefHierarchique) {
-		this.chefHierarchique = chefHierarchique;
+	public void setChefHierarchiqueCin(String chefHierarchiqueCin) {
+		this.chefHierarchiqueCin = chefHierarchiqueCin;
 	}
 	public List<DemandeVoiture> getListDemandeVoiture() {
 		return listDemandeVoiture;
@@ -29,9 +29,13 @@ public class Employe extends JwtUser{
 	public void setListDemandeVoiture(List<DemandeVoiture> listDemandeVoiture) {
 		this.listDemandeVoiture = listDemandeVoiture;
 	}
-	public Employe(ChefHierarchique chefHierarchique) {
+	public Employe(String chefHierarchiqueCin) {
 		super();
-		this.chefHierarchique = chefHierarchique;
+		this.chefHierarchiqueCin=chefHierarchiqueCin;
+	}
+	public Employe() {
+		super();
+		
 	}
 
 

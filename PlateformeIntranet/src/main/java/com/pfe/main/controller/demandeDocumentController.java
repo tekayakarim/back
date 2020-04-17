@@ -23,7 +23,7 @@ public class demandeDocumentController {
 
 	@Autowired
 	DemandeDocumentService demandeDocumentService;
-	@PreAuthorize("hasRole('EMPLOYE')")
+	//@PreAuthorize("hasRole('EMPLOYE')")
 	@PostMapping("/add")  
 	public String create(@RequestBody DemandeDocument demandeDocument) {
 		return demandeDocumentService.CreateDemande(demandeDocument);

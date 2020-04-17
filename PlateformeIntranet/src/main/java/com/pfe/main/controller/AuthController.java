@@ -51,9 +51,6 @@ public class AuthController {
 
 	@Autowired
 	JwtUserRepository jwtUserRepository;
-	
-	@Autowired
-	ChefHierarchiqueRepository chefHierarchiqueRepository;
 
 	@Autowired
 	JwtRoleRepository jwtRoleRepository;
@@ -97,8 +94,7 @@ public class AuthController {
 		String strRole = signUpRequest.getRole();
 		Set<JwtRole> roles = new HashSet<>();
 		if (strRole == null || strRole.toLowerCase().equals("employe")) {
-			user=new Employe(chefHierarchiqueRepository
-					.findByCin(signUpRequest.getChefHiercharchiqueCin()));
+			user=new Employe(signUpRequest.getChefHierarchiqueCin());
 			JwtRole employeRole = jwtRoleRepository.findByName(JwtERole.ROLE_EMPLOYE)
 					.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 			roles.add(employeRole);
@@ -133,8 +129,7 @@ public class AuthController {
 					JwtRole employeRole = jwtRoleRepository.findByName(JwtERole.ROLE_EMPLOYE)
 							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 					roles.add(employeRole);
-					user=new Employe(chefHierarchiqueRepository
-							.findByCin(signUpRequest.getChefHiercharchiqueCin()));
+					user=new Employe(signUpRequest.getChefHierarchiqueCin());
 					
 				}
 			}

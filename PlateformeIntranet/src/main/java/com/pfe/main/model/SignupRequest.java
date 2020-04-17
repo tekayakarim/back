@@ -10,7 +10,7 @@ public class SignupRequest {
     private String role; 
     private String nom;
     private String prenom;
-   private String chefHiercharchiqueCin;
+   private String chefHierarchiqueCin;
    
 	public String getNom() {
 		return nom;
@@ -68,13 +68,15 @@ public class SignupRequest {
 		this.role = role;
 	}
 
-	public String getChefHiercharchiqueCin() {
-		return chefHiercharchiqueCin;
+	public String getChefHierarchiqueCin() {
+		return chefHierarchiqueCin;
 	}
 
-	public void setChefHiercharchiqueCin(String chefHiercharchiqueCin) {
-		this.chefHiercharchiqueCin = chefHiercharchiqueCin;
+	public void setChefHierarchiqueCin(String chefHierarchiqueCin) {
+		this.chefHierarchiqueCin = chefHierarchiqueCin;
 	}
+
+
     
 
 }

@@ -18,6 +18,24 @@ public class ChefHierarchique extends JwtUser{
 	
 	@OneToMany 
 	private List<DemandeDocument> listDemandeDocument;
+
+	public List<DemandeVoiture> getListDemandeVoiture() {
+		return listDemandeVoiture;
+	}
+
+	public void setListDemandeVoiture(List<DemandeVoiture> listDemandeVoiture) {
+		this.listDemandeVoiture = listDemandeVoiture;
+	}
+
+	public List<DemandeDocument> getListDemandeDocument() {
+		return listDemandeDocument;
+	}
+
+	public void setListDemandeDocument(List<DemandeDocument> listDemandeDocument) {
+		this.listDemandeDocument = listDemandeDocument;
+	}
+	
+	
 	
 
 }
