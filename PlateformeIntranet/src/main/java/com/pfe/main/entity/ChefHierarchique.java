@@ -2,9 +2,7 @@ package com.pfe.main.entity;
 
 import java.util.List;
 
-
-
-
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
@@ -13,11 +11,23 @@ public class ChefHierarchique extends JwtUser{
 
 
 
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<DemandeVoiture> listDemandeVoiture;
 	
-	@OneToMany 
+	@OneToMany(cascade = CascadeType.ALL) 
 	private List<DemandeDocument> listDemandeDocument;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Employe> listEmploye;
+	
+
+	public List<Employe> getListEmploye() {
+		return listEmploye;
+	}
+
+	public void setListEmploye(List<Employe> listEmploye) {
+		this.listEmploye = listEmploye;
+	}
 
 	public List<DemandeVoiture> getListDemandeVoiture() {
 		return listDemandeVoiture;

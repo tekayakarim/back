@@ -1,5 +1,6 @@
 package com.pfe.main.controller;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 
@@ -54,6 +55,9 @@ public class AuthController {
 
 	@Autowired
 	JwtRoleRepository jwtRoleRepository;
+	
+	@Autowired
+	ChefHierarchiqueRepository chefHierarchiqueRepository;
 
 	@Autowired
 	PasswordEncoder encoder;
@@ -141,7 +145,20 @@ public class AuthController {
 		 encoder.encode(signUpRequest.getPassword()));
 		user.setRoles(roles);
 		jwtUserRepository.save(user);
-
+if(signUpRequest.getChefHierarchiqueCin()!=null) {
+	ChefHierarchique chef=chefHierarchiqueRepository
+			.findByCin(signUpRequest.getChefHierarchiqueCin());
+	List<Employe> listEmp=new ArrayList<Employe>();
+	if (chef.getListEmploye()==null) {
+		listEmp.add((Employe) user);
+		chef.setListEmploye(listEmp);
+	} else {
+listEmp.addAll(chef.getListEmploye());
+listEmp.add((Employe) user);
+chef.setListEmploye(listEmp);
+	}
+	chefHierarchiqueRepository.flush();
+}
 		return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
 	}
 }

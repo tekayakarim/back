@@ -2,8 +2,7 @@ package com.pfe.main.entity;
 
 import java.util.List;
 
-
-
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -14,7 +13,7 @@ import javax.validation.constraints.Size;
 public class Employe extends JwtUser{
 
 	private String chefHierarchiqueCin;
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<DemandeVoiture> listDemandeVoiture;
 
 	public String getChefHierarchiqueCin() {
