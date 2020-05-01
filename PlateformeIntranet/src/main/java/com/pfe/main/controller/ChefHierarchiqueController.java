@@ -12,12 +12,12 @@ import com.pfe.main.entity.DemandeDocument;
 import com.pfe.main.service.ChefHierarchiqueService;
 
 @RestController
-@RequestMapping("/main/chef")
+@RequestMapping("/main/chefHierarchique")
 public class ChefHierarchiqueController {
 @Autowired
 ChefHierarchiqueService chefHierarchiqueService;
-@GetMapping("/getAllDemande")
-public List<DemandeDocument> getAllDemande(@RequestParam String cin){
-	return chefHierarchiqueService.getAllNewDemande(cin);
+@GetMapping("/getAllDemandeDocument")
+public List<DemandeDocument> getAllDemande(@RequestParam String userName){
+	return chefHierarchiqueService.getAllNewDemande(userName);
 }
 }

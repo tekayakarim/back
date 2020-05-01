@@ -19,7 +19,7 @@ import com.pfe.main.service.DemandeDocumentService;
 
 @RestController
 @RequestMapping("/main/demandeDocument")
-public class demandeDocumentController {
+public class DemandeDocumentController {
 
 	@Autowired
 	DemandeDocumentService demandeDocumentService;

@@ -7,5 +7,5 @@ import org.springframework.stereotype.Service;
 import com.pfe.main.entity.DemandeDocument;
 
 public interface ChefHierarchiqueService {
-List<DemandeDocument> getAllNewDemande(String cin);
+List<DemandeDocument> getAllNewDemande(String userName);
 }

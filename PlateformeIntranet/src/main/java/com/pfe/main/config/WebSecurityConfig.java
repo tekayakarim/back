@@ -1,7 +1,7 @@
 package com.pfe.main.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -21,6 +21,7 @@ import com.pfe.main.security.services.JwtUserDetailsServiceImpl;
 
 @Configuration
 @EnableWebSecurity
+@EnableAutoConfiguration
 @EnableGlobalMethodSecurity(
 		securedEnabled = true,
 		 jsr250Enabled = true,

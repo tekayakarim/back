@@ -18,10 +18,10 @@ public class ChefHierarchiqueServiceImpl implements ChefHierarchiqueService {
 	@Autowired
 	DemandeDocumentRepository demandeDocumentRepository;
 	@Override
-	public List<DemandeDocument> getAllNewDemande(String cin) {
+	public List<DemandeDocument> getAllNewDemande(String userName) {
 		try {
 			//current user chef
-			ChefHierarchique user=chefHierarchiqueRepository.findByCin(cin);
+			ChefHierarchique user=chefHierarchiqueRepository.findByUserName(userName);
 			user.setListDemandeDocument(null);
 			chefHierarchiqueRepository.flush();
 			//all demandes
@@ -31,7 +31,7 @@ public class ChefHierarchiqueServiceImpl implements ChefHierarchiqueService {
 			//recuperer les demandes des employes de ce chef <user>
 			for(DemandeDocument dem:lstAllDemande)
 			{
-				if(dem.getEmp().getChefHierarchiqueCin().equals(cin) 
+				if(dem.getEmp().getChefHierarchiqueCin().equals(user.getCin()) 
 						&& !dem.getStatut().equals("accepted")
 						&& !dem.getStatut().equals("denied"))
 				{
