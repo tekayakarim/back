@@ -47,5 +47,17 @@ public class ChefHierarchiqueServiceImpl implements ChefHierarchiqueService {
 		}
 		return null;
 	}
+	@Override
+	public String updateDemandeDocument(long id,String statut) {
+		try {
+			DemandeDocument dem=demandeDocumentRepository.findByid(id);
+			dem.setStatut(statut);
+			demandeDocumentRepository.flush();
+			return "updated";
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		return "fail";
+	}
 
 }

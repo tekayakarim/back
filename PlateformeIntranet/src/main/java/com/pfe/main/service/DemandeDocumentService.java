@@ -8,9 +8,9 @@ import com.pfe.main.entity.DemandeDocument;
 
 public interface DemandeDocumentService {
 public String CreateDemande(DemandeDocument demandeDocument);
-public DemandeDocument getDemande(Long id);
+public DemandeDocument getDemande(long id);
 public String updateDemande(DemandeDocument demandeDocument);
 public List<DemandeDocument> getAllDemande();
-public String deleteDemande(Long id);
+public String deleteDemande(long id);
 public List<DemandeDocument> getAllDemandeByEmploye(String userName); 
 }

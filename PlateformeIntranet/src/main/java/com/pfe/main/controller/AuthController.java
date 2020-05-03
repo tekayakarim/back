@@ -2,12 +2,6 @@ package com.pfe.main.controller;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-
-
-
-
-
-
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -26,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pfe.main.entity.AgentDAAF;
+import com.pfe.main.entity.ChefDAAF;
 import com.pfe.main.entity.ChefHierarchique;
 import com.pfe.main.entity.ChefPark;
 import com.pfe.main.entity.Employe;
@@ -105,6 +100,12 @@ public class AuthController {
 			
 		} else {
 			switch (strRole.toLowerCase()) {
+			case "chefDAAF":	
+				JwtRole chefDAAFRole = jwtRoleRepository.findByName(JwtERole.ROLE_CHEFDAAF)
+						.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+				roles.add(chefDAAFRole);
+				user=new ChefDAAF();
+				break;
 				case "chef park":	
 					JwtRole chefparkRole = jwtRoleRepository.findByName(JwtERole.ROLE_CHEFPARK)
 							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));

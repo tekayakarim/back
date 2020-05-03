@@ -32,7 +32,7 @@ public class DemandeDocumentController {
 	public DemandeDocument get(@RequestParam Long id) {
 	return 	demandeDocumentService.getDemande(id);
 	}
-	@PreAuthorize("hasRole('EMPLOYE')")
+	//@PreAuthorize("hasRole('EMPLOYE')")
 	@PutMapping("/update")
 	public String update(@RequestBody DemandeDocument demandeDocument) {
 		return demandeDocumentService.updateDemande(demandeDocument);

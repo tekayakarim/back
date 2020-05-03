@@ -5,5 +5,6 @@ public enum JwtERole {
     ROLE_CHEFPARK,
     ROLE_CHEFHIERARCHIQUE,
     ROLE_AGENTDAAF,
+    ROLE_CHEFDAAF,
     ROLE_ADMIN
 }

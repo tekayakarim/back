@@ -40,7 +40,7 @@ public class DemandeDocumentServiceImpl implements DemandeDocumentService {
 		return "Fail";
 	}
 	@Override
-	public DemandeDocument getDemande(Long id) {
+	public DemandeDocument getDemande(long id) {
 	
 		return demandeDocumentRepository.findByid(id);
 	}
@@ -69,7 +69,7 @@ public class DemandeDocumentServiceImpl implements DemandeDocumentService {
 		return demandeDocumentRepository.findAll();
 	}
 	@Override  
-	public String deleteDemande(Long id) {
+	public String deleteDemande(long id) {
 		try {
 			demandeDocumentRepository.deleteById(id);
 			return "success";

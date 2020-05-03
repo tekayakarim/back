@@ -10,6 +10,12 @@ public class SignupRequest {
     private String role; 
     private String nom;
     private String prenom;
+	@NotBlank
+    @Size(min = 6, max = 40)
+    private String password;
+    @NotBlank
+    @Size(max = 8)
+  private String cin;
    private String chefHierarchiqueCin;
    
 	public String getNom() {
@@ -28,12 +34,6 @@ public class SignupRequest {
 		this.prenom = prenom;
 	}
 
-	@NotBlank
-    @Size(min = 6, max = 40)
-    private String password;
-    @NotBlank
-    @Size(max = 8)
-  private String cin;
     
     public String getCin() {
 		return cin;
