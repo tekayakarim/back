@@ -3,6 +3,7 @@ package com.pfe.main.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +15,7 @@ import com.pfe.main.entity.DemandeDocument;
 import com.pfe.main.service.ChefHierarchiqueService;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/main/chefHierarchique")
 public class ChefHierarchiqueController {
 @Autowired
