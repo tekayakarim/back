@@ -39,10 +39,10 @@ public class DemandeDocumentController {
 	public String update(@RequestBody DemandeDocument demandeDocument) {
 		return demandeDocumentService.updateDemande(demandeDocument);
 	}
-	/*@GetMapping("/getAll")
+	@GetMapping("/getAll")
 	public List<DemandeDocument> getAll(){
 		return demandeDocumentService.getAllDemande();
-	}*/
+	}
 	@DeleteMapping("/delete")
 	public String delete(@RequestParam long id) {
 		return demandeDocumentService.deleteDemande(id);

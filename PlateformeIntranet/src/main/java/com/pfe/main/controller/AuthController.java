@@ -100,7 +100,7 @@ public class AuthController {
 			
 		} else {
 			switch (strRole.toLowerCase()) {
-			case "chefDAAF":	
+			case "chef daaf":	
 				JwtRole chefDAAFRole = jwtRoleRepository.findByName(JwtERole.ROLE_CHEFDAAF)
 						.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 				roles.add(chefDAAFRole);
@@ -118,7 +118,7 @@ public class AuthController {
 					roles.add(chefhierarchiqueRole);
 					user=new ChefHierarchique();
 					break;
-				case "agentDAAF":
+				case "agent daaf":
 					JwtRole agentDAAFRole = jwtRoleRepository.findByName(JwtERole.ROLE_AGENTDAAF)
 							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 					roles.add(agentDAAFRole);

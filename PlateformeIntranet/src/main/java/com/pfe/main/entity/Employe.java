@@ -4,6 +4,10 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
@@ -13,7 +17,10 @@ import javax.validation.constraints.Size;
 public class Employe extends JwtUser{
 
 	private String chefHierarchiqueCin;
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(	name = "Employe_List_Demande_voiture", 
+				joinColumns = @JoinColumn(name = "Employe_id"), 
+				inverseJoinColumns = @JoinColumn(name = "demande_voiture_id"))
 	private List<DemandeVoiture> listDemandeVoiture;
 
 	public String getChefHierarchiqueCin() {

@@ -102,5 +102,10 @@ public JwtUser() {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	@Override
+	public String toString() {
+		return "JwtUser [id=" + id + ", userName=" + userName + ", roles=" + roles + ", cin=" + cin + ", nom=" + nom
+				+ ", prenom=" + prenom + ", password=" + password + "]";
+	}
     
 }

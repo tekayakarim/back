@@ -4,6 +4,10 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -11,13 +15,22 @@ public class ChefHierarchique extends JwtUser{
 
 
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(	name = "chef_hierarchique_list_demande_voiture", 
+				joinColumns = @JoinColumn(name = "chef_hierarchique_id"), 
+				inverseJoinColumns = @JoinColumn(name = "demande_voiture_id"))
 	private List<DemandeVoiture> listDemandeVoiture;
 	
-	@OneToMany(cascade = CascadeType.ALL) 
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(	name = "chef_hierarchique_list_demande_document", 
+				joinColumns = @JoinColumn(name = "chef_hierarchique_id"), 
+				inverseJoinColumns = @JoinColumn(name = "demande_document_id"))
 	private List<DemandeDocument> listDemandeDocument;
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(	name = "chef_hierarchique_list_employe", 
+				joinColumns = @JoinColumn(name = "chef_hierarchique_id"), 
+				inverseJoinColumns = @JoinColumn(name = "employe_id"))
 	private List<Employe> listEmploye;
 	
 
