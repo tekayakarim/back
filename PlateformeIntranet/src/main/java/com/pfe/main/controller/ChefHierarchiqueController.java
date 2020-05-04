@@ -24,6 +24,7 @@ ChefHierarchiqueService chefHierarchiqueService;
 public List<DemandeDocument> getAllDemande(@RequestParam String userName){
 	return chefHierarchiqueService.getAllNewDemande(userName);
 }
+@CrossOrigin(origins = "*")
 @PutMapping("/updateStatut")
 public String updateDemandeStatut(@RequestParam Long id,@RequestParam String statut) {
 return 	chefHierarchiqueService.updateDemandeDocument(id,statut);
