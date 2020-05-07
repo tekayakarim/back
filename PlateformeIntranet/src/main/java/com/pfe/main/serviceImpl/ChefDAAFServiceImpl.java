@@ -137,14 +137,6 @@ public class ChefDAAFServiceImpl implements ChefDAAFService {
 			return processAndTaskInfo.toString();
 		}
 	
-		// fetch task assigned to employee
-		public List<Task> getTasks(String assignee) {
-			return taskService.createTaskQuery().taskAssignee(assignee).list();
-		}
-	
-		// complete the task
-		public void completeTask(String taskId) {
-			taskService.complete(taskId);
-		}
+
 
 }
