@@ -14,6 +14,16 @@ public class AgentDAAF extends JwtUser{
 
 	@OneToOne
 	private DemandeDocument demandeDocument;
+
+	public DemandeDocument getDemandeDocument() {
+		return demandeDocument;
+	}
+
+	public void setDemandeDocument(DemandeDocument demandeDocument) {
+		this.demandeDocument = demandeDocument;
+	}
+	
+	
 	
 
 }
