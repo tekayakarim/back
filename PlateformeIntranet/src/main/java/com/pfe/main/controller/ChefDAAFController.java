@@ -5,10 +5,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.pfe.main.entity.AgentDAAF;
 import com.pfe.main.entity.DemandeDocument;
 import com.pfe.main.service.ChefDAAFService;
 
@@ -23,5 +26,13 @@ public class ChefDAAFController {
 	@GetMapping("/getAllAcceptedDemandeDocument")
 	public List<DemandeDocument> getAllDemande(@RequestParam String userName){
 		return chefDAAFService.getAllAcceptedDemande(userName);
+	}
+	@GetMapping("/getAllAgentLibreByChef")
+	public List<AgentDAAF> getAllAgentLibre(@RequestParam String userName){
+		return chefDAAFService.listerAgentDemandeNull(userName);
+	}
+	@PostMapping("/confierDemande")
+	public String confier(@RequestParam long idDemande,@RequestParam String userName) {
+		return chefDAAFService.ConfierDemande(idDemande, userName);
 	}
 }
