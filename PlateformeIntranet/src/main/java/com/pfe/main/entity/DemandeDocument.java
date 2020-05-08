@@ -48,6 +48,10 @@ public class DemandeDocument {
 	public void setType(String type) {
 		this.type = type;
 	}
+	@Override
+	public String toString() {
+		return "DemandeDocument [id=" + id + ", description=" + description + ", type=" + type  + "]";
+	}
 	
 	
 }

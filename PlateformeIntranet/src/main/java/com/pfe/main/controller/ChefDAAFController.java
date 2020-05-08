@@ -2,6 +2,7 @@ package com.pfe.main.controller;
 
 import java.util.List;
 
+import org.activiti.engine.task.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.pfe.main.entity.AgentDAAF;
 import com.pfe.main.entity.DemandeDocument;
+import com.pfe.main.service.AgentDAAFService;
 import com.pfe.main.service.ChefDAAFService;
 
 @RestController
@@ -22,6 +24,8 @@ public class ChefDAAFController {
 	
 	@Autowired
 	ChefDAAFService chefDAAFService;
+	
+
 	
 	@GetMapping("/getAllAcceptedDemandeDocument")
 	public List<DemandeDocument> getAllDemande(@RequestParam String userName){
@@ -35,4 +39,5 @@ public class ChefDAAFController {
 	public String confier(@RequestParam long idDemande,@RequestParam String userName) {
 		return chefDAAFService.ConfierDemande(idDemande, userName);
 	}
+
 }

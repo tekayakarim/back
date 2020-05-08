@@ -7,22 +7,37 @@ import org.activiti.engine.task.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.pfe.main.entity.AgentDAAF;
+import com.pfe.main.repository.AgentDAAFRepository;
+import com.pfe.main.service.ActivitiService;
 import com.pfe.main.service.AgentDAAFService;
 @Service
 public class AgentDAAFServiceImpl implements AgentDAAFService {
 	
 	@Autowired
-	private TaskService taskService;
+	ActivitiService activitiService;
 	
+	@Autowired
+	AgentDAAFRepository agentDAAFRepository;
 	@Override
-	public List<Task> getTasks(String userName) {
-		return taskService.createTaskQuery().taskAssignee(userName).list();
+	public String getDemandeToDo(String userName) {
+		return activitiService.processInformation();
+
 	}
 
 	@Override
-	public void completeTask(long taskId) {
-		taskService.complete(String.valueOf(taskId));
-
+	public String DemandeDone(String userName,String id) {
+		activitiService.completeTask(id);
+		try {
+			AgentDAAF agent=agentDAAFRepository.findByUserName(userName);
+			agent.setDemandeDocument(null);
+			agentDAAFRepository.flush();
+			return "Demande done";
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "fail to complete demande";
 	}
+	
 
 }

@@ -19,6 +19,7 @@ import com.pfe.main.entity.DemandeDocument;
 import com.pfe.main.repository.AgentDAAFRepository;
 import com.pfe.main.repository.ChefDAAFRepository;
 import com.pfe.main.repository.DemandeDocumentRepository;
+import com.pfe.main.service.ActivitiService;
 import com.pfe.main.service.ChefDAAFService;
 @Service
 public class ChefDAAFServiceImpl implements ChefDAAFService {
@@ -30,16 +31,11 @@ public class ChefDAAFServiceImpl implements ChefDAAFService {
 	AgentDAAFRepository agentDAAFRepository;
 	
 	@Autowired
-	private RuntimeService runtimeService;
+	ActivitiService activitiService;
 	
 	@Autowired
 	DemandeDocumentRepository demandeDocumentRepository;
 	
-	@Autowired
-	private TaskService taskService;
-
-	@Autowired
-	private RepositoryService repositoryService;
 	
 	@Override
 	public List<DemandeDocument> getAllAcceptedDemande(String userName) {
@@ -89,13 +85,7 @@ public class ChefDAAFServiceImpl implements ChefDAAFService {
 			//set dem to agent
 			agent.setDemandeDocument(demande);
 			agentDAAFRepository.flush();
-			//begin the process 
-			Map<String, Object> variables = new HashMap<>();
-			variables.put("agent", agent);
-
-			runtimeService.startProcessInstanceByKey("demandeDocumentProcess", variables);
-
-			return processInformation();	
+			return activitiService.startTheProcess(userName);
 		}
 	}
 	@Override
@@ -118,25 +108,9 @@ public class ChefDAAFServiceImpl implements ChefDAAFService {
 	}
 	
 
-	// fetching process and task information
-		public String processInformation() {
-	
-			List<Task> taskList = taskService.createTaskQuery().orderByTaskCreateTime().asc().list();
-	
-			StringBuilder processAndTaskInfo = new StringBuilder();
-			
-			processAndTaskInfo.append("Number of process definition available: "
-					+ repositoryService.createProcessDefinitionQuery().count() + " | Task Details= ");
-	
-			taskList.forEach(task -> {
-	
-				processAndTaskInfo.append("\n"+"ID: " + task.getId() + ", Name: " + task.getName() + ", Assignee: "
-						+ task.getAssignee() );
-			});
-	
-			return processAndTaskInfo.toString();
-		}
-	
+
+
+		
 
 
 }
