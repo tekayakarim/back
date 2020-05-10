@@ -17,7 +17,16 @@ public class SignupRequest {
     @Size(max = 8)
   private String cin;
    private String chefHierarchiqueCin;
+   private String chefDAAFCin;
    
+	public String getChefDAAFCin() {
+	return chefDAAFCin;
+}
+
+public void setChefDAAFCin(String chefDAAFCin) {
+	this.chefDAAFCin = chefDAAFCin;
+}
+
 	public String getNom() {
 		return nom;
 	}

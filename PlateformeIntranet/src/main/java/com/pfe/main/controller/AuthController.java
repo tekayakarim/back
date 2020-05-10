@@ -32,6 +32,7 @@ import com.pfe.main.model.JwtUserDetails;
 import com.pfe.main.model.LoginRequest;
 import com.pfe.main.model.MessageResponse;
 import com.pfe.main.model.SignupRequest;
+import com.pfe.main.repository.ChefDAAFRepository;
 import com.pfe.main.repository.ChefHierarchiqueRepository;
 import com.pfe.main.repository.JwtRoleRepository;
 import com.pfe.main.repository.JwtUserRepository;
@@ -53,6 +54,9 @@ public class AuthController {
 	
 	@Autowired
 	ChefHierarchiqueRepository chefHierarchiqueRepository;
+	
+	@Autowired
+	ChefDAAFRepository chefDAAFRepository;
 
 	@Autowired
 	PasswordEncoder encoder;
@@ -122,7 +126,7 @@ public class AuthController {
 					JwtRole agentDAAFRole = jwtRoleRepository.findByName(JwtERole.ROLE_AGENTDAAF)
 							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 					roles.add(agentDAAFRole);
-					user=new AgentDAAF();
+					user=new AgentDAAF(signUpRequest.getChefDAAFCin());
 					break;
 				case "admin":
 					JwtRole adminRole = jwtRoleRepository.findByName(JwtERole.ROLE_ADMIN)
@@ -159,6 +163,21 @@ listEmp.add((Employe) user);
 chef.setListEmploye(listEmp);
 	}
 	chefHierarchiqueRepository.flush();
+} 
+if(signUpRequest.getChefDAAFCin()!=null) {
+	ChefDAAF chef=chefDAAFRepository
+			.findByCin(signUpRequest.getChefDAAFCin());
+	List<AgentDAAF> listAgent=new ArrayList<AgentDAAF>();
+	if (chef.getListAgent()==null) {
+		listAgent.add((AgentDAAF) user);
+	
+	} else {
+		listAgent.addAll(chef.getListAgent());
+		listAgent.add((AgentDAAF) user);
+		
+	}
+	chef.setListAgent(listAgent);
+	chefDAAFRepository.flush();
 }
 		return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
 	}

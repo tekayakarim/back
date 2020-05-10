@@ -10,4 +10,5 @@ import com.pfe.main.entity.ChefHierarchique;
 public interface ChefDAAFRepository extends JpaRepository<ChefDAAF, Long> {
 	
 	ChefDAAF findByUserName(String userName);
+	ChefDAAF findByCin(String cin);
 }
