@@ -53,7 +53,8 @@ public class ChefDAAFServiceImpl implements ChefDAAFService {
 			for(DemandeDocument dem:lstAllDemande)
 			{
 				if(!dem.getStatut().equals("new")
-				&& !dem.getStatut().equals("denied"))
+				&& !dem.getStatut().equals("denied")
+				&& !dem.getStatut().equals("toCheck"))
 				{
 					lstDemandesChef.add(dem);	
 				}//end if
