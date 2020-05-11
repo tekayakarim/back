@@ -16,5 +16,15 @@ insert into roles(name) values('ROLE_ADMIN');
 
 # after go to 
 http://localhost:9000/auth/signup
-# To add admin user you need to put this body in your request
-
+# To add an admin user you need to put this body in your request
+![](images/1.PNG)
+# To add a "chef hierarchique user" you need to put this body in your request
+![](images/2.PNG)
+# To add a "employe user" you need to put this body in your request
+![](images/3.PNG)
+# To add a "chef park user" you need to put this body in your request
+![](images/4.PNG)
+# To add an "chef DAAF user" you need to put this body in your request
+![](images/5.PNG)
+# To add an "agent DAAF user" you need to put this body in your request
+![](images/6.PNG)
