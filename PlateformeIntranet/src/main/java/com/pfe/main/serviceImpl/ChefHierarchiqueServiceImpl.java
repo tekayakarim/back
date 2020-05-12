@@ -59,5 +59,10 @@ public class ChefHierarchiqueServiceImpl implements ChefHierarchiqueService {
 		} 
 		return "fail";
 	}
+	@Override
+	public List<ChefHierarchique> listerAllChefHie() {
+		
+		return chefHierarchiqueRepository.findAll();
+	}
 
 }

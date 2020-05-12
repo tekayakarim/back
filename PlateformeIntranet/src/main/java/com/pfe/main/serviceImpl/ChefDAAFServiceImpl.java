@@ -107,6 +107,11 @@ public class ChefDAAFServiceImpl implements ChefDAAFService {
 		}
 		return null;
 	}
+	@Override
+	public List<ChefDAAF> listerAllChefDAAF() {
+		
+		return chefDAAFRepository.findAll();
+	}
 	
 
 

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pfe.main.entity.AgentDAAF;
+import com.pfe.main.entity.ChefDAAF;
 import com.pfe.main.entity.DemandeDocument;
 import com.pfe.main.service.AgentDAAFService;
 import com.pfe.main.service.ChefDAAFService;
@@ -38,6 +39,10 @@ public class ChefDAAFController {
 	@PostMapping("/confierDemande")
 	public String confier(@RequestParam long idDemande,@RequestParam String userName) {
 		return chefDAAFService.ConfierDemande(idDemande, userName);
+	}
+	@GetMapping("/getAllChefDAAF")
+	public List<ChefDAAF> getAllChef(){
+		return chefDAAFService.listerAllChefDAAF();
 	}
 
 }

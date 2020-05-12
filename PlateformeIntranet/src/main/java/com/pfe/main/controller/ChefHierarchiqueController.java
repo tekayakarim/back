@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.pfe.main.entity.ChefHierarchique;
 import com.pfe.main.entity.DemandeDocument;
 import com.pfe.main.service.ChefHierarchiqueService;
 
@@ -30,4 +31,8 @@ public String updateDemandeStatut(@RequestParam Long id,@RequestParam String sta
 return 	chefHierarchiqueService.updateDemandeDocument(id,statut);
 }
 
+@GetMapping("/getAllChefHierarchique")
+public List<ChefHierarchique> getAllChef(){
+	return chefHierarchiqueService.listerAllChefHie();
+}
 }
