@@ -54,7 +54,8 @@ public class ChefDAAFServiceImpl implements ChefDAAFService {
 			{
 				if(!dem.getStatut().equals("new")
 				&& !dem.getStatut().equals("denied")
-				&& !dem.getStatut().equals("toCheck"))
+				&& !dem.getStatut().equals("toCheck")
+				&& !dem.getStatut().equals("inProgress"))
 				{
 					lstDemandesChef.add(dem);	
 				}//end if
@@ -84,6 +85,8 @@ public class ChefDAAFServiceImpl implements ChefDAAFService {
 		else
 		{
 			//set dem to agent
+			demande.setStatut("inProgress");
+			demandeDocumentRepository.flush();
 			agent.setDemandeDocument(demande);
 			agentDAAFRepository.flush();
 			return activitiService.startTheProcess(agent.getUserName());
