@@ -51,6 +51,17 @@ public JwtUser(@NotBlank @Size(max = 20) String userName,
 public JwtUser() {
 	// TODO Auto-generated constructor stub
 }
+
+	public JwtUser(@NotBlank @Size(max = 20) String userName, Set<JwtRole> roles, String cin, String nom, String prenom,
+		@NotBlank String password) {
+	super();
+	this.userName = userName;
+	this.roles = roles;
+	this.cin = cin;
+	this.nom = nom;
+	this.prenom = prenom;
+	this.password = password;
+}
 	public String getNom() {
 		return nom;
 	}

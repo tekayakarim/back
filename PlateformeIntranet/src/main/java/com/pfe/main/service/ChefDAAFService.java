@@ -10,7 +10,7 @@ import com.pfe.main.entity.DemandeDocument;
 
 public interface ChefDAAFService {
 	List<DemandeDocument> getAllAcceptedDemande(String userName);
-	String ConfierDemande(long idDemande,String userName);
+	String ConfierDemande(long idDemande,long id);
 	List<AgentDAAF> listerAgentDemandeNull(String userName);
     List<ChefDAAF> listerAllChefDAAF();
 }

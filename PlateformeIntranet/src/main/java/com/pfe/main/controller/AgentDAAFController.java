@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.pfe.main.entity.AgentDAAF;
 import com.pfe.main.service.AgentDAAFService;
 
 @RestController
@@ -24,5 +25,9 @@ public String toDo(@RequestParam String userName){
 @GetMapping("/demandeDone")
 public String demandeDone(@RequestParam String userName,@RequestParam String id) {
 	return agentDAAFService.DemandeDone(userName, id);
+}
+@GetMapping("/getAgent")
+public AgentDAAF getAgent(@RequestParam long id) {
+	return agentDAAFService.getAgent(id);
 }
 }

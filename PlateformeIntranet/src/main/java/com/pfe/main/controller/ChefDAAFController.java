@@ -37,8 +37,8 @@ public class ChefDAAFController {
 		return chefDAAFService.listerAgentDemandeNull(userName);
 	}
 	@PostMapping("/confierDemande")
-	public String confier(@RequestParam long idDemande,@RequestParam String userName) {
-		return chefDAAFService.ConfierDemande(idDemande, userName);
+	public String confier(@RequestParam long idDemande,@RequestParam long idAgent) {
+		return chefDAAFService.ConfierDemande(idDemande, idAgent);
 	}
 	@GetMapping("/getAllChefDAAF")
 	public List<ChefDAAF> getAllChef(){

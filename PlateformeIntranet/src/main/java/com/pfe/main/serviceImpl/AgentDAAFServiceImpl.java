@@ -38,6 +38,12 @@ public class AgentDAAFServiceImpl implements AgentDAAFService {
 		}
 		return "fail to complete demande";
 	}
+
+	@Override
+	public AgentDAAF getAgent(long id) {
+		
+		return agentDAAFRepository.findByid(id);
+	}
 	
 
 }

@@ -69,8 +69,8 @@ public class ChefDAAFServiceImpl implements ChefDAAFService {
 		return null;
 	}
 	@Override
-	public String ConfierDemande(long idDemande,String userName) {
-		AgentDAAF agent=agentDAAFRepository.findByUserName(userName);
+	public String ConfierDemande(long idDemande,long id) {
+		AgentDAAF agent=agentDAAFRepository.findByid(id);
 		DemandeDocument demande=demandeDocumentRepository.findByid(idDemande);
 		System.out.println(agent);
 		if(agent.getDemandeDocument()!=null)
@@ -86,7 +86,7 @@ public class ChefDAAFServiceImpl implements ChefDAAFService {
 			//set dem to agent
 			agent.setDemandeDocument(demande);
 			agentDAAFRepository.flush();
-			return activitiService.startTheProcess(userName);
+			return activitiService.startTheProcess(agent.getUserName());
 		}
 	}
 	@Override

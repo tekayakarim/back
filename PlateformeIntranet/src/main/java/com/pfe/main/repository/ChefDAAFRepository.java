@@ -11,4 +11,5 @@ public interface ChefDAAFRepository extends JpaRepository<ChefDAAF, Long> {
 	
 	ChefDAAF findByUserName(String userName);
 	ChefDAAF findByCin(String cin);
+	ChefDAAF findByid(long id);
 }

@@ -7,4 +7,5 @@ import com.pfe.main.entity.AgentDAAF;
 @Repository
 public interface AgentDAAFRepository extends JpaRepository<AgentDAAF, Long> {
 AgentDAAF findByUserName(String userName);
+AgentDAAF findByid(long id);
 }
