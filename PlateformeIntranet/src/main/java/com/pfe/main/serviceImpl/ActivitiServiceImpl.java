@@ -12,9 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pfe.main.entity.AgentDAAF;
-import com.pfe.main.entity.JwtUser;
 import com.pfe.main.repository.AgentDAAFRepository;
-import com.pfe.main.repository.JwtUserRepository;
 import com.pfe.main.service.ActivitiService;
 
 @Service

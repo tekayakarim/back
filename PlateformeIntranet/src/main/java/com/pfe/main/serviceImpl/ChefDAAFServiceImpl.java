@@ -1,20 +1,13 @@
 package com.pfe.main.serviceImpl;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import org.activiti.engine.RepositoryService;
-import org.activiti.engine.RuntimeService;
-import org.activiti.engine.TaskService;
-import org.activiti.engine.task.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pfe.main.entity.AgentDAAF;
 import com.pfe.main.entity.ChefDAAF;
-import com.pfe.main.entity.ChefHierarchique;
 import com.pfe.main.entity.DemandeDocument;
 import com.pfe.main.repository.AgentDAAFRepository;
 import com.pfe.main.repository.ChefDAAFRepository;

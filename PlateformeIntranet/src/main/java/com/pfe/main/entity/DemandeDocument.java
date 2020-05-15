@@ -1,6 +1,5 @@
 package com.pfe.main.entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,8 +14,16 @@ public class DemandeDocument {
 	private String description;
 	private String type;
 	private String statut;
+	private String langue;
 	@OneToOne
 	private Employe emp;
+	
+	public String getLangue() {
+		return langue;
+	}
+	public void setLangue(String langue) {
+		this.langue = langue;
+	}
 	public Long getId() {
 		return id;
 	}

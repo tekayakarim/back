@@ -5,11 +5,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+
 import com.pfe.main.entity.JwtRole;
 import com.pfe.main.model.JwtERole;
 import com.pfe.main.repository.JwtRoleRepository;
-import com.pfe.main.repository.JwtUserRepository;
-import com.pfe.main.service.UserService;
 
 @SpringBootApplication(exclude = { org.activiti.spring.boot.SecurityAutoConfiguration.class})
 public class PlateformeIntranetApplication {

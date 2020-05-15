@@ -8,17 +8,25 @@ import org.springframework.stereotype.Service;
 
 import com.pfe.main.entity.ChefHierarchique;
 import com.pfe.main.entity.DemandeDocument;
+import com.pfe.main.entity.DemandeVoiture;
 import com.pfe.main.repository.ChefHierarchiqueRepository;
 import com.pfe.main.repository.DemandeDocumentRepository;
+import com.pfe.main.repository.DemandeVoitureRepository;
 import com.pfe.main.service.ChefHierarchiqueService;
 @Service
 public class ChefHierarchiqueServiceImpl implements ChefHierarchiqueService {
+	
 	@Autowired
 	ChefHierarchiqueRepository chefHierarchiqueRepository;
+	
 	@Autowired
 	DemandeDocumentRepository demandeDocumentRepository;
+	
+	@Autowired
+	DemandeVoitureRepository demandeVoitureRepository;
+	
 	@Override
-	public List<DemandeDocument> getAllNewDemande(String userName) {
+	public List<DemandeDocument> getAllNewDemandeDocument(String userName) {
 		try {
 			//current user chef
 			ChefHierarchique user=chefHierarchiqueRepository.findByUserName(userName);
@@ -63,6 +71,74 @@ public class ChefHierarchiqueServiceImpl implements ChefHierarchiqueService {
 	public List<ChefHierarchique> listerAllChefHie() {
 		
 		return chefHierarchiqueRepository.findAll();
+	}
+	@Override
+	public List<DemandeVoiture> getAllNewDemandeVoiture(String userName) {
+		try {
+			//current user chef
+			ChefHierarchique user=chefHierarchiqueRepository.findByUserName(userName);
+			//all demandes
+			List<DemandeVoiture> lstAllDemande=demandeVoitureRepository.findAll();
+			//liste vide de document
+			List<DemandeVoiture> lstDemandesChef=new ArrayList<DemandeVoiture>();
+			//recuperer les demandes des employes de ce chef <user>
+			for(DemandeVoiture dem:lstAllDemande)
+			{
+				if(dem.getEmp().getChefHierarchiqueCin().equals(user.getCin()) 
+						&& !dem.getStatut().equals("accepted")
+						&& !dem.getStatut().equals("denied"))
+				{
+					lstDemandesChef.add(dem);	
+				}//end if
+			}//end for
+			//ajouter les demandes a l'historique
+		if(user.getListDemandeVoiture()==null)
+		{
+			user.setListDemandeVoiture(lstDemandesChef);
+			
+		}
+		else
+		{
+			List<DemandeVoiture> lstExist=user.getListDemandeVoiture();
+			List<DemandeVoiture> lstNewPlusExist=new ArrayList<DemandeVoiture>();
+			lstNewPlusExist.addAll(lstDemandesChef);
+			lstNewPlusExist.addAll(lstExist);
+			
+			user.setListDemandeVoiture(lstNewPlusExist);
+		}
+
+			chefHierarchiqueRepository.flush();
+			return lstDemandesChef;
+			
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		return null;
+	}
+	@Override
+	public String updateDemandeVoiture(long id, String statut) {
+		try {
+			DemandeVoiture dem=demandeVoitureRepository.findByid(id);
+			dem.setStatut(statut);
+			demandeVoitureRepository.flush();
+			return "updated";
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		return "fail";
+	}
+	@Override
+	public List<DemandeVoiture> getAllDemandeVoiture(String userName) {
+		
+		try {
+			//current user chef
+			ChefHierarchique user=chefHierarchiqueRepository.findByUserName(userName);
+			return user.getListDemandeVoiture();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }
