@@ -3,7 +3,9 @@ package com.pfe.main.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -38,4 +40,13 @@ public class DemandeVoitureController {
 	public List<DemandeVoiture> getAll(){
 		return demandeVoitureService.getAllDemande();
 	}
+	@DeleteMapping("/delete")
+	public String delete(@RequestParam long id) {
+		return demandeVoitureService.deleteDemande(id);
+	}
+	@GetMapping("/getByCurrentUser")
+	@PreAuthorize("#userName == authentication.principal.username and hasRole('EMPLOYE')")
+	public List<DemandeVoiture> get(@RequestParam String userName) {
+	return 	demandeVoitureService.getAllDemandeByEmploye(userName);
+	} 
 }

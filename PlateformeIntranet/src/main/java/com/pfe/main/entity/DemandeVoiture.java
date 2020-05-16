@@ -15,6 +15,7 @@ private int nbPassergers;
 private String description;
 private String statut;
 private String typeMission;
+private String dateRecuperation;
 @OneToOne
 private Employe emp;
 public DemandeVoiture(int nbPassergers, String description, String statut, String typeMission, Employe emp) {
@@ -28,6 +29,12 @@ public DemandeVoiture(int nbPassergers, String description, String statut, Strin
 public DemandeVoiture() {
 	super();
 
+}
+public String getDateRecuperation() {
+	return dateRecuperation;
+}
+public void setDateRecuperation(String dateRecuperation) {
+	this.dateRecuperation = dateRecuperation;
 }
 public long getId() {
 	return id;

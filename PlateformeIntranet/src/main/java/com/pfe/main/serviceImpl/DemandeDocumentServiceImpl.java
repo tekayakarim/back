@@ -71,8 +71,14 @@ public class DemandeDocumentServiceImpl implements DemandeDocumentService {
 	@Override  
 	public String deleteDemande(long id) {
 		try {
+			DemandeDocument dem=demandeDocumentRepository.findByid(id);
+			if(dem.getStatut().equals("new") || dem.getStatut().equals("denied"))
+			{
 			demandeDocumentRepository.deleteById(id);
 			return "success";
+			}
+			else
+				return "cannot delete a demande with statut not equal to new or denied";
 		} catch (IllegalArgumentException e) {
 			System.out.println("demande not found");
 			e.printStackTrace();

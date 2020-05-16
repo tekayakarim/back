@@ -1,5 +1,6 @@
 package com.pfe.main.serviceImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,6 +65,46 @@ public class DemandeVoitureServiceImpl implements DemandeVoitureService {
 	public List<DemandeVoiture> getAllDemande() {
 		
 		return demandeVoitureRepository.findAll();
+	}
+
+	@Override
+	public String deleteDemande(long id) {
+		try {
+			DemandeVoiture dem=demandeVoitureRepository.findByid(id);
+			if(dem.getStatut().equals("new") || dem.getStatut().equals("denied"))
+			{
+			demandeVoitureRepository.deleteById(id);
+			return "success";
+			}
+			else
+				return "cannot delete a demande with statut not equal to new ";
+		} catch (IllegalArgumentException e) {
+			System.out.println("demande not found");
+			e.printStackTrace();
+		}
+		return "fail";
+	}
+
+	@Override
+	public List<DemandeVoiture> getAllDemandeByEmploye(String userName) {
+		//liste vide de demande
+		ArrayList<DemandeVoiture> lstDocumentVide=new ArrayList<DemandeVoiture>();
+		//liste de tout les documents
+		List<DemandeVoiture> lstDocument=this.getAllDemande();
+		try {
+			Employe emp=employeRepository.findByUserName(userName);
+			
+			if(emp!=null) {
+			
+			for(DemandeVoiture dem:lstDocument) {
+				if(dem.getEmp().equals(emp))
+					lstDocumentVide.add(dem);
+			}//end for
+			}//end if
+		} //end try
+		catch (Exception e) { e.printStackTrace();}
+		
+		return lstDocumentVide;
 	}
 
 }

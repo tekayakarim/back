@@ -41,7 +41,8 @@ public class ChefHierarchiqueServiceImpl implements ChefHierarchiqueService {
 			{
 				if(dem.getEmp().getChefHierarchiqueCin().equals(user.getCin()) 
 						&& !dem.getStatut().equals("accepted")
-						&& !dem.getStatut().equals("denied"))
+						&& !dem.getStatut().equals("denied")
+						&& !dem.getStatut().equals("toCheck"))
 				{
 					lstDemandesChef.add(dem);	
 				}//end if
@@ -86,7 +87,8 @@ public class ChefHierarchiqueServiceImpl implements ChefHierarchiqueService {
 			{
 				if(dem.getEmp().getChefHierarchiqueCin().equals(user.getCin()) 
 						&& !dem.getStatut().equals("accepted")
-						&& !dem.getStatut().equals("denied"))
+						&& !dem.getStatut().equals("denied")
+						&& !dem.getStatut().equals("toCheck"))
 				{
 					lstDemandesChef.add(dem);	
 				}//end if
