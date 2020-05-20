@@ -13,4 +13,5 @@ import com.pfe.main.model.JwtERole;
 @Repository
 public interface JwtRoleRepository extends JpaRepository<JwtRole, Long> {
 	Optional<JwtRole> findByName(JwtERole name);
+	JwtRole findByname(JwtERole name);
 }

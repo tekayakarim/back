@@ -64,6 +64,8 @@ public class AuthController {
 	@Autowired
 	JwtUtils jwtUtils;
 
+
+
 	@PostMapping("/signin")
 	public ResponseEntity<?> authenticateUser( @RequestBody LoginRequest loginRequest) {
 
@@ -149,6 +151,7 @@ public class AuthController {
 		user.setPassword(
 		 encoder.encode(signUpRequest.getPassword()));
 		user.setRoles(roles);
+		user.setEmail(signUpRequest.getEmail());
 		jwtUserRepository.save(user);
 if(signUpRequest.getChefHierarchiqueCin()!=null) {
 	ChefHierarchique chef=chefHierarchiqueRepository

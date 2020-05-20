@@ -34,6 +34,7 @@ public class JwtUser {
     private String cin; 
     private String nom;
     private String prenom;
+    private String email;
     @NotBlank
  private String password;
 
@@ -62,6 +63,18 @@ public JwtUser() {
 	this.prenom = prenom;
 	this.password = password;
 }
+	
+	public JwtUser(@NotBlank @Size(max = 20) String userName, Set<JwtRole> roles, String cin, String nom, String prenom,
+			String email, @NotBlank String password) {
+		super();
+		this.userName = userName;
+		this.roles = roles;
+		this.cin = cin;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.password = password;
+	}
 	public String getNom() {
 		return nom;
 	}
@@ -112,6 +125,13 @@ public JwtUser() {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	@Override
 	public String toString() {

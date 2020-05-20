@@ -18,7 +18,16 @@ public class SignupRequest {
   private String cin;
    private String chefHierarchiqueCin;
    private String chefDAAFCin;
+   private String email;
    
+	public String getEmail() {
+	return email;
+}
+
+public void setEmail(String email) {
+	this.email = email;
+}
+
 	public String getChefDAAFCin() {
 	return chefDAAFCin;
 }
@@ -83,6 +92,23 @@ public void setChefDAAFCin(String chefDAAFCin) {
 
 	public void setChefHierarchiqueCin(String chefHierarchiqueCin) {
 		this.chefHierarchiqueCin = chefHierarchiqueCin;
+	}
+
+	public SignupRequest() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public SignupRequest(@NotBlank @Size(min = 3, max = 20) String userName, String role, String nom, String prenom,
+			@NotBlank @Size(min = 6, max = 40) String password, @NotBlank @Size(max = 8) String cin, String email) {
+		super();
+		this.userName = userName;
+		this.role = role;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.password = password;
+		this.cin = cin;
+		this.email = email;
 	}
 
 

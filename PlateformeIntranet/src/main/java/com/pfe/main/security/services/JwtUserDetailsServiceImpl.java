@@ -1,9 +1,6 @@
 package com.pfe.main.security.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
-
-
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -19,6 +16,7 @@ public class JwtUserDetailsServiceImpl implements UserDetailsService {
 	@Autowired
 	JwtUserRepository jwtUserRepository;
 
+
 	@Override
 	@Transactional
 	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
@@ -27,5 +25,6 @@ public class JwtUserDetailsServiceImpl implements UserDetailsService {
 
 		return JwtUserDetails.build(user);
 	}
+
 
 }
