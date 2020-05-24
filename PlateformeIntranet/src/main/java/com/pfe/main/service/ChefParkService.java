@@ -13,4 +13,5 @@ List<Voiture> findAllPoidsAutoriseVoiture(String userName,double poids);
 List<Voiture> findAllNbPassagersVoiture(String userName,int nbPassagers);
 List<Voiture> findAllPoidsAutoriseVoitureAndNbPassagers(String userName,double poids,int nbPassagers);
 List<DemandeVoiture> getAll(String userName);
+String updateDemandeVoiture(long id,String statut);
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.pfe.main.entity.AgentDAAF;
 import com.pfe.main.entity.DemandeDocument;
 import com.pfe.main.repository.AgentDAAFRepository;
+import com.pfe.main.repository.DemandeDocumentRepository;
 import com.pfe.main.service.ActivitiService;
 import com.pfe.main.service.AgentDAAFService;
 @Service
@@ -14,6 +15,9 @@ public class AgentDAAFServiceImpl implements AgentDAAFService {
 	
 	@Autowired
 	ActivitiService activitiService;
+	
+	@Autowired
+	DemandeDocumentRepository demandeDocumentRepository;
 	
 	@Autowired
 	AgentDAAFRepository agentDAAFRepository;
@@ -29,6 +33,11 @@ public class AgentDAAFServiceImpl implements AgentDAAFService {
 		activitiService.completeTask(id);
 		try {
 			AgentDAAF agent=agentDAAFRepository.findByUserName(userName);
+			
+			DemandeDocument dem=agent.getDemandeDocument();
+			dem.setStatut("closed");
+			demandeDocumentRepository.flush();
+			
 			agent.setDemandeDocument(null);
 			agentDAAFRepository.flush();
 			return "Demande done";

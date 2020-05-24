@@ -191,4 +191,17 @@ public class ChefParkServiceImpl implements ChefParkService{
 		return null;
 	}
 
+	@Override
+	public String updateDemandeVoiture(long id, String statut) {
+		try {
+			DemandeVoiture dem=demandeVoitureRepository.findByid(id);
+			dem.setStatut(statut);
+			demandeVoitureRepository.flush();
+			return "updated";
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		return "fail";
+	}
+
 }
