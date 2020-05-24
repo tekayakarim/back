@@ -59,6 +59,10 @@ public class DemandeDocument {
 	public String toString() {
 		return "DemandeDocument [id=" + id + ", description=" + description + ", type=" + type  + "]";
 	}
-	
+	@Override
+	public boolean equals(Object obj) {
+	DemandeDocument demande=(DemandeDocument)obj;
+		return super.equals(demande.getId());
+	}
 	
 }

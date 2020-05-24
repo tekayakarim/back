@@ -42,7 +42,9 @@ public class ChefHierarchiqueServiceImpl implements ChefHierarchiqueService {
 				if(dem.getEmp().getChefHierarchiqueCin().equals(user.getCin()) 
 						&& !dem.getStatut().equals("accepted")
 						&& !dem.getStatut().equals("denied")
-						&& !dem.getStatut().equals("toCheck"))
+						&& !dem.getStatut().equals("toCheck")
+						&& !dem.getStatut().equals("inProgress")
+						&& !dem.getStatut().equals("closed"))
 				{
 					lstDemandesChef.add(dem);	
 				}//end if
@@ -88,7 +90,9 @@ public class ChefHierarchiqueServiceImpl implements ChefHierarchiqueService {
 				if(dem.getEmp().getChefHierarchiqueCin().equals(user.getCin()) 
 						&& !dem.getStatut().equals("accepted")
 						&& !dem.getStatut().equals("denied")
-						&& !dem.getStatut().equals("toCheck"))
+						&& !dem.getStatut().equals("toCheck")
+						&& !dem.getStatut().equals("inProgress")
+						&& !dem.getStatut().equals("closed"))
 				{
 					lstDemandesChef.add(dem);	
 				}//end if
@@ -104,7 +108,11 @@ public class ChefHierarchiqueServiceImpl implements ChefHierarchiqueService {
 			List<DemandeVoiture> lstExist=user.getListDemandeVoiture();
 			List<DemandeVoiture> lstNewPlusExist=new ArrayList<DemandeVoiture>();
 			lstNewPlusExist.addAll(lstDemandesChef);
-			lstNewPlusExist.addAll(lstExist);
+			//lstNewPlusExist.addAll(lstExist);
+			for(DemandeVoiture demande:lstExist) {
+				if(!lstNewPlusExist.contains(demande))
+					lstNewPlusExist.add(demande);	
+			}//end for
 			
 			user.setListDemandeVoiture(lstNewPlusExist);
 		}
@@ -130,6 +138,7 @@ public class ChefHierarchiqueServiceImpl implements ChefHierarchiqueService {
 		} 
 		return "fail";
 	}
+	//afficher historique
 	@Override
 	public List<DemandeVoiture> getAllDemandeVoiture(String userName) {
 		

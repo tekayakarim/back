@@ -10,7 +10,8 @@ private long id;
 private String matricule;
 private int nbChevaux;
 private String couleur;
-private double poidsAutrise;
+private double poidsAutorise;
+private int nbPassagers;
 public long getId() {
 	return id;
 }
@@ -35,21 +36,27 @@ public String getCouleur() {
 public void setCouleur(String couleur) {
 	this.couleur = couleur;
 }
-public double getPoidsAutrise() {
-	return poidsAutrise;
+
+public double getPoidsAutorise() {
+	return poidsAutorise;
 }
-public void setPoidsAutrise(double poidsAutrise) {
-	this.poidsAutrise = poidsAutrise;
+public void setPoidsAutorise(double poidsAutorise) {
+	this.poidsAutorise = poidsAutorise;
 }
-public Voiture(String matricule, int nbChevaux, String couleur, double poidsAutrise) {
-	super();
-	this.matricule = matricule;
-	this.nbChevaux = nbChevaux;
-	this.couleur = couleur;
-	this.poidsAutrise = poidsAutrise;
+
+public int getNbPassagers() {
+	return nbPassagers;
+}
+public void setNbPassagers(int nbPassagers) {
+	this.nbPassagers = nbPassagers;
 }
 public Voiture() {
 	super();
+}
+@Override
+public boolean equals(Object obj) {
+	Voiture voi=(Voiture)obj;
+	return super.equals(voi.getId());
 }
 
 

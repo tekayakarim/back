@@ -15,6 +15,7 @@ List<ChefHierarchique> listerAllChefHie();
 // begin demande voit
 List<DemandeVoiture> getAllNewDemandeVoiture(String userName);
 String updateDemandeVoiture(long id,String statut);
+//afficher historique
 List<DemandeVoiture> getAllDemandeVoiture(String userName);
 //end demande voit
 }

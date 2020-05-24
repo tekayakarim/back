@@ -48,7 +48,8 @@ public class ChefDAAFServiceImpl implements ChefDAAFService {
 				if(!dem.getStatut().equals("new")
 				&& !dem.getStatut().equals("denied")
 				&& !dem.getStatut().equals("toCheck")
-				&& !dem.getStatut().equals("inProgress"))
+				&& !dem.getStatut().equals("inProgress")
+				&& !dem.getStatut().equals("closed"))
 				{
 					lstDemandesChef.add(dem);	
 				}//end if

@@ -72,5 +72,11 @@ public Employe getEmp() {
 public void setEmp(Employe emp) {
 	this.emp = emp;
 }
+@Override
+public boolean equals(Object obj) {
+DemandeVoiture demande=(DemandeVoiture)obj;
+	return super.equals(demande.getId());
+}
+
 
 }
