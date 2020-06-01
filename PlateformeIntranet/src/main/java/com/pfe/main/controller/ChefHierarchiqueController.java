@@ -37,7 +37,7 @@ public List<ChefHierarchique> getAllChef(){
 }
 @GetMapping("/getAllDemandeVoiture")
 public List<DemandeVoiture> getAllDemandeVoiture(@RequestParam String userName){
-	return chefHierarchiqueService.getAllDemandeVoiture(userName);
+	return chefHierarchiqueService.getAllNewDemandeVoiture(userName);
 }
 @CrossOrigin(origins = "*")
 @PutMapping("/updateStatutDemandeVoiture")

@@ -7,19 +7,20 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 @Entity
 public class ChefPark extends JwtUser{
 
 
 
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(	name = "chef_park_list_demande_voiture", 
 				joinColumns = @JoinColumn(name = "chef_park_id"), 
 				inverseJoinColumns = @JoinColumn(name = "demande_voiture_id"))
 	private List<DemandeVoiture> listDemandeVoiture;
 	
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(	name = "chef_park_list_voiture", 
 				joinColumns = @JoinColumn(name = "chef_park_id"), 
 				inverseJoinColumns = @JoinColumn(name = "voiture_matricule"))

@@ -72,13 +72,15 @@ public class DemandeDocumentServiceImpl implements DemandeDocumentService {
 	public String deleteDemande(long id) {
 		try {
 			DemandeDocument dem=demandeDocumentRepository.findByid(id);
-			if(dem.getStatut().equals("new") || dem.getStatut().equals("denied"))
+			if(dem.getStatut().equals("new") 
+			|| dem.getStatut().equals("denied")
+			|| dem.getStatut().equals("closed"))
 			{
 			demandeDocumentRepository.deleteById(id);
 			return "success";
 			}
 			else
-				return "cannot delete a demande with statut not equal to new or denied";
+				return "cannot delete a demande with statut not equal to new or denied or closed";
 		} catch (IllegalArgumentException e) {
 			System.out.println("demande not found");
 			e.printStackTrace();
@@ -105,6 +107,19 @@ public class DemandeDocumentServiceImpl implements DemandeDocumentService {
 		catch (Exception e) { e.printStackTrace();}
 		
 		return lstDocumentVide;
+	}
+	@Override
+	public String returnEmailById(long id) {
+		try {
+			DemandeDocument dem=demandeDocumentRepository.findByid(id);
+			Employe emp=employeRepository.findByUserName(dem.getEmp().getUserName());
+			return emp.getEmail();
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			
+		}
+		return "not found";
 	}
 	
 

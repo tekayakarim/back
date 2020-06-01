@@ -40,7 +40,7 @@ public class ActivitiServiceImpl implements ActivitiService {
 
 		runtimeService.startProcessInstanceByKey("demandeDocumentProcess", variables);
 
-		return processInformation()+agent.getDemandeDocument();
+		return processInformation()+agent.getDemandeDocument().toString();
 	}
 
 	@Override

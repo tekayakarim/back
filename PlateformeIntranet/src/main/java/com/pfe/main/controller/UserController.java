@@ -24,6 +24,7 @@ EmployeService employeService;
 
 @Autowired
 UserService userService;
+
 @GetMapping("/getCurrentUserEmploye")
 public JwtUser getUserEmploye(@RequestParam String userName) {
 	return employeService.getEmploye(userName);

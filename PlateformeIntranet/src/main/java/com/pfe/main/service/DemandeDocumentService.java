@@ -11,4 +11,5 @@ public String updateDemande(DemandeDocument demandeDocument);
 public List<DemandeDocument> getAllDemande();
 public String deleteDemande(long id);
 public List<DemandeDocument> getAllDemandeByEmploye(String userName); 
+public String returnEmailById(long id);
 }

@@ -14,12 +14,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.pfe.main.entity.DemandeDocument;
 import com.pfe.main.service.DemandeDocumentService;
 
 
 @RestController
 @CrossOrigin(origins = "*")
+
 @RequestMapping("/main/demandeDocument")
 public class DemandeDocumentController {
 
@@ -52,4 +54,12 @@ public class DemandeDocumentController {
 	public List<DemandeDocument> get(@RequestParam String userName) {
 	return 	demandeDocumentService.getAllDemandeByEmploye(userName);
 	} 
+	@GetMapping("/getMail")
+	@JsonIgnore
+	//@PreAuthorize("hasRole('CHEFHIERARCHIQUE')")
+	public String getMail(@RequestParam long id) {
+		System.out.println( demandeDocumentService.returnEmailById(id));
+		return demandeDocumentService.returnEmailById(id);
+	}
+	
 }

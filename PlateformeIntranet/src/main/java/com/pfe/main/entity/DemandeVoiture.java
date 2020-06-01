@@ -16,6 +16,8 @@ private String description;
 private String statut;
 private String typeMission;
 private String dateRecuperation;
+private String dataDebut;
+private String dataFin;
 @OneToOne
 private Employe emp;
 public DemandeVoiture(int nbPassergers, String description, String statut, String typeMission, Employe emp) {
@@ -71,6 +73,19 @@ public Employe getEmp() {
 }
 public void setEmp(Employe emp) {
 	this.emp = emp;
+}
+
+public String getDataDebut() {
+	return dataDebut;
+}
+public void setDataDebut(String dataDebut) {
+	this.dataDebut = dataDebut;
+}
+public String getDataFin() {
+	return dataFin;
+}
+public void setDataFin(String dataFin) {
+	this.dataFin = dataFin;
 }
 @Override
 public boolean equals(Object obj) {

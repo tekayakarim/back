@@ -1,11 +1,13 @@
 package com.pfe.main.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
 public class Voiture {
 @Id
+@GeneratedValue
 private long id;
 private String matricule;
 private int nbChevaux;

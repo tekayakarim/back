@@ -77,7 +77,7 @@ public class DemandeVoitureServiceImpl implements DemandeVoitureService {
 			return "success";
 			}
 			else
-				return "cannot delete a demande with statut not equal to new ";
+				return "cannot delete a demande with statut not equal to new or denied";
 		} catch (IllegalArgumentException e) {
 			System.out.println("demande not found");
 			e.printStackTrace();

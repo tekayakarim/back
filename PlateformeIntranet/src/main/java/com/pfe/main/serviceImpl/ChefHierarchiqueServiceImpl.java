@@ -101,23 +101,40 @@ public class ChefHierarchiqueServiceImpl implements ChefHierarchiqueService {
 		if(user.getListDemandeVoiture()==null)
 		{
 			user.setListDemandeVoiture(lstDemandesChef);
-			
+			chefHierarchiqueRepository.flush();
 		}
 		else
 		{
+			
 			List<DemandeVoiture> lstExist=user.getListDemandeVoiture();
+			
 			List<DemandeVoiture> lstNewPlusExist=new ArrayList<DemandeVoiture>();
-			lstNewPlusExist.addAll(lstDemandesChef);
+			lstNewPlusExist.addAll(lstExist);
+			if(lstNewPlusExist.containsAll(lstDemandesChef)) {return lstDemandesChef;}else
+			{
+				for(DemandeVoiture demande:lstDemandesChef) {
+					if(!lstNewPlusExist.contains(demande))
+					{
+						lstNewPlusExist.add(demande);	
+					}
+				}
+			}
+			/*lstNewPlusExist.addAll(lstDemandesChef);
 			//lstNewPlusExist.addAll(lstExist);
 			for(DemandeVoiture demande:lstExist) {
-				if(!lstNewPlusExist.contains(demande))
+				if(lstNewPlusExist.indexOf(demande)==-1)
+				{
 					lstNewPlusExist.add(demande);	
+				}
 			}//end for
 			
+			if(lstNewPlusExist.containsAll(c)) {
 			user.setListDemandeVoiture(lstNewPlusExist);
-		}
-
 			chefHierarchiqueRepository.flush();
+			}*/
+		}
+	
+
 			return lstDemandesChef;
 			
 		} catch (Exception e) {
