@@ -18,19 +18,32 @@ private String typeMission;
 private String dateRecuperation;
 private String dataDebut;
 private String dataFin;
+private double poids;
 @OneToOne
 private Employe emp;
-public DemandeVoiture(int nbPassergers, String description, String statut, String typeMission, Employe emp) {
+
+public DemandeVoiture(int nbPassergers, String description, String statut, String typeMission, String dateRecuperation,
+		String dataDebut, String dataFin, double poids, Employe emp) {
 	super();
 	this.nbPassergers = nbPassergers;
 	this.description = description;
 	this.statut = statut;
 	this.typeMission = typeMission;
+	this.dateRecuperation = dateRecuperation;
+	this.dataDebut = dataDebut;
+	this.dataFin = dataFin;
+	this.poids = poids;
 	this.emp = emp;
 }
 public DemandeVoiture() {
 	super();
 
+}
+public double getPoids() {
+	return poids;
+}
+public void setPoids(double poids) {
+	this.poids = poids;
 }
 public String getDateRecuperation() {
 	return dateRecuperation;
