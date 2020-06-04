@@ -63,7 +63,7 @@ public class PlateformeIntranetApplication {
 					user.setPassword(
 					 encoder.encode("admin"));
 					user.setRoles(roles);
-					user.setEmail("abdelkarimbentekaya@gmail.com");
+					user.setEmail("pfe.cni@gmail.com");
 					jwtUserRepository.save(user);
 				}
 
