@@ -14,6 +14,14 @@ private int nbChevaux;
 private String couleur;
 private double poidsAutorise;
 private int nbPassagers;
+private boolean isDispo;
+
+public boolean isDispo() {
+	return isDispo;
+}
+public void setDispo(boolean isDispo) {
+	this.isDispo = isDispo;
+}
 public long getId() {
 	return id;
 }
@@ -54,6 +62,7 @@ public void setNbPassagers(int nbPassagers) {
 }
 public Voiture() {
 	super();
+	this.isDispo=true;
 }
 @Override
 public boolean equals(Object obj) {

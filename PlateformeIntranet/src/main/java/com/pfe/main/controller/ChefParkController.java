@@ -34,8 +34,8 @@ public class ChefParkController {
 	}
 	
 	@GetMapping("/getAllVoiture")
-	public List<DemandeVoiture> getAllVoiture(@RequestParam String userName){
-		return chefParkService.getAll(userName);
+	public List<Voiture> getAllVoiture(@RequestParam String userName){
+		return chefParkService.getAllVoiture(userName);
 	}
 	
 	@GetMapping("/getAllVoiturePoids")

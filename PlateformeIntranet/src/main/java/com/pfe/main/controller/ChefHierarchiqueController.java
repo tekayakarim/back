@@ -21,6 +21,7 @@ import com.pfe.main.service.ChefHierarchiqueService;
 public class ChefHierarchiqueController {
 @Autowired
 ChefHierarchiqueService chefHierarchiqueService;
+//demande doc
 @GetMapping("/getAllDemandeDocument")
 public List<DemandeDocument> getAllDemandeDocument(@RequestParam String userName){
 	return chefHierarchiqueService.getAllNewDemandeDocument(userName);
@@ -35,6 +36,7 @@ return 	chefHierarchiqueService.updateDemandeDocument(id,statut);
 public List<ChefHierarchique> getAllChef(){
 	return chefHierarchiqueService.listerAllChefHie();
 }
+//demande voiture
 @GetMapping("/getAllDemandeVoiture")
 public List<DemandeVoiture> getAllDemandeVoiture(@RequestParam String userName){
 	return chefHierarchiqueService.getAllNewDemandeVoiture(userName);

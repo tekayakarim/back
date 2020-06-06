@@ -120,7 +120,7 @@ public class ChefParkServiceImpl implements ChefParkService{
 			
 			//recuperer les voitures qui ont un poids <= au poids demande
 			for(Voiture voi:lstAllVoiture) {
-				if(voi.getPoidsAutorise()<=poids) {
+				if(voi.getPoidsAutorise()>=poids) {
 					lstResVoiture.add(voi);
 				}//end if
 			}//end for
@@ -142,7 +142,7 @@ public class ChefParkServiceImpl implements ChefParkService{
 			
 			//recuperer les voitures qui ont le nb passagers <= au nombre de la  demande
 			for(Voiture voi:lstAllVoiture) {
-				if(voi.getNbPassagers()<=nbPassagers) {
+				if(voi.getNbPassagers()>=nbPassagers) {
 					lstResVoiture.add(voi);
 				}//end if
 			}//end for
