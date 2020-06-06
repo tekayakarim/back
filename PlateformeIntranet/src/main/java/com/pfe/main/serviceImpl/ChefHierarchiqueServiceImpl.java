@@ -168,5 +168,10 @@ public class ChefHierarchiqueServiceImpl implements ChefHierarchiqueService {
 		}
 		return null;
 	}
+	@Override
+	public ChefHierarchique getCin(String cin) {
+		
+		return chefHierarchiqueRepository.findByCin(cin);
+	}
 
 }

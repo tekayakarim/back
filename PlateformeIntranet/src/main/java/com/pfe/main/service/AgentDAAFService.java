@@ -8,4 +8,5 @@ DemandeDocument getDemandeToDo(String userName);
 String getTaskToDo(String userName);
 String DemandeDone(String userName,String id);
 AgentDAAF getAgent(long id);
+AgentDAAF getAgentByUserName(String userName);
 }

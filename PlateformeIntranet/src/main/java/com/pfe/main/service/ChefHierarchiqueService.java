@@ -18,4 +18,5 @@ String updateDemandeVoiture(long id,String statut);
 //afficher historique
 List<DemandeVoiture> getAllDemandeVoiture(String userName);
 //end demande voit
+ChefHierarchique getCin(String cin);
 }

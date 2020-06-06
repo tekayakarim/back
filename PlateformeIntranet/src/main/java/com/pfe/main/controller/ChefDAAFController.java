@@ -41,5 +41,8 @@ public class ChefDAAFController {
 	public List<ChefDAAF> getAllChef(){
 		return chefDAAFService.listerAllChefDAAF();
 	}
-
+	@GetMapping("/getChefDAAFByCin")
+	public ChefDAAF getAgentByUserName(@RequestParam String cin) {
+		return chefDAAFService.getChefByCin(cin);
+	}
 }

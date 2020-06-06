@@ -32,4 +32,8 @@ public String demandeDone(@RequestParam String userName,@RequestParam String id)
 public AgentDAAF getAgent(@RequestParam long id) {
 	return agentDAAFService.getAgent(id);
 }
+@GetMapping("/getAgentByUserName")
+public AgentDAAF getAgentByUserName(@RequestParam String userName) {
+	return agentDAAFService.getAgentByUserName(userName);
+}
 }

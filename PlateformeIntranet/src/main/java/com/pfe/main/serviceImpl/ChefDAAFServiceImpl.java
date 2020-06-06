@@ -109,6 +109,11 @@ public class ChefDAAFServiceImpl implements ChefDAAFService {
 		
 		return chefDAAFRepository.findAll();
 	}
+	@Override
+	public ChefDAAF getChefByCin(String cin) {
+		
+		return chefDAAFRepository.findByCin(cin);
+	}
 	
 
 

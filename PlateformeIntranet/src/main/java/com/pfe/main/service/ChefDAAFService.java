@@ -11,4 +11,5 @@ public interface ChefDAAFService {
 	String ConfierDemande(long idDemande,long id);
 	List<AgentDAAF> listerAgentDemandeNull(String userName);
     List<ChefDAAF> listerAllChefDAAF();
+    ChefDAAF getChefByCin(String cin);
 }

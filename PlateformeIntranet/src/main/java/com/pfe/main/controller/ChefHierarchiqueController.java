@@ -44,4 +44,8 @@ public List<DemandeVoiture> getAllDemandeVoiture(@RequestParam String userName){
 public String updateDemandeVoitureStatut(@RequestParam Long id,@RequestParam String statut) {
 return 	chefHierarchiqueService.updateDemandeVoiture(id, statut);
 }
+@GetMapping("/getChefHierarchiqueByCin")
+public ChefHierarchique getByCin(@RequestParam String cin){
+	return chefHierarchiqueService.getCin(cin);
+}
 }

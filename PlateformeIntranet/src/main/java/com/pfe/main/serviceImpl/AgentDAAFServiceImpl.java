@@ -61,6 +61,12 @@ public class AgentDAAFServiceImpl implements AgentDAAFService {
 		}
 		return null;
 	}
+
+	@Override
+	public AgentDAAF getAgentByUserName(String userName) {
+		
+		return agentDAAFRepository.findByUserName(userName);
+	}
 	
 
 }
