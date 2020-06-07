@@ -84,12 +84,14 @@ public class ChefParkServiceImpl implements ChefParkService{
 		{
 			List<DemandeVoiture> lstExist=user.getListDemandeVoiture();
 			List<DemandeVoiture> lstNewPlusExist=new ArrayList<DemandeVoiture>();
-			lstNewPlusExist.addAll(lstDemandesChef);
-			//lstNewPlusExist.addAll(lstExist);
-			for(DemandeVoiture demande:lstExist) {
-				if(!lstNewPlusExist.contains(demande))
-					lstNewPlusExist.add(demande);	
-			}//end for
+			//lstNewPlusExist.addAll(lstDemandesChef);
+			lstNewPlusExist.addAll(lstExist);
+			
+			for(DemandeVoiture demande:lstDemandesChef) {
+				if(lstNewPlusExist.indexOf(demande)!=-1 && lstNewPlusExist.lastIndexOf(demande)!=-1)
+					lstNewPlusExist.add(demande);
+			}
+			
 			user.setListDemandeVoiture(lstNewPlusExist);
 		}
 
