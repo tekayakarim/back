@@ -55,4 +55,8 @@ public class ChefParkController {
 													@RequestParam int nbPassagers){
 	return chefParkService.findAllPoidsAutoriseVoitureAndNbPassagers(userName, poids, nbPassagers);
 	}
+	@GetMapping("/getAllVoitureDispo")
+	public List<Voiture> getVoitureDispoByCurrentChefPark(@RequestParam String userName) {
+		return chefParkService.getVoitureDispoByCurrentChefPark(userName);
+	}
 }

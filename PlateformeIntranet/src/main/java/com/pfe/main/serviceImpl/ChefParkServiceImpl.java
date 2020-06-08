@@ -1,6 +1,7 @@
 package com.pfe.main.serviceImpl;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -204,6 +205,25 @@ public class ChefParkServiceImpl implements ChefParkService{
 			e.printStackTrace();
 		} 
 		return "fail";
+	}
+
+	@Override
+	public List<Voiture> getVoitureDispoByCurrentChefPark(String userName) {
+	
+		try {
+			List<Voiture> allVoiture=this.getAllVoiture(userName);
+			List<Voiture> lstDispoVoiture=new ArrayList<Voiture>();
+			for (Voiture voiture : allVoiture) {
+				if (voiture.isDispo()) {
+					lstDispoVoiture.add(voiture);
+				}
+			}
+			return lstDispoVoiture;
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }
