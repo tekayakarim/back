@@ -15,4 +15,5 @@ List<Voiture> findAllPoidsAutoriseVoitureAndNbPassagers(String userName,double p
 List<DemandeVoiture> getAll(String userName);
 String updateDemandeVoiture(long id,String statut);
 List<Voiture> getVoitureDispoByCurrentChefPark(String userName);
+String assginVoiture(long idVoiture,long idDemande);
 }

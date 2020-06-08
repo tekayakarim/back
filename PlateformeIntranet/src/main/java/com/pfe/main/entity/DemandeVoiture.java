@@ -22,6 +22,9 @@ private double poids;
 @OneToOne
 private Employe emp;
 
+@OneToOne 
+private Voiture voiture;
+
 public DemandeVoiture(int nbPassergers, String description, String statut, String typeMission, String dateRecuperation,
 		String dataDebut, String dataFin, double poids, Employe emp) {
 	super();
@@ -38,6 +41,12 @@ public DemandeVoiture(int nbPassergers, String description, String statut, Strin
 public DemandeVoiture() {
 	super();
 
+}
+public Voiture getVoiture() {
+	return voiture;
+}
+public void setVoiture(Voiture voiture) {
+	this.voiture = voiture;
 }
 public double getPoids() {
 	return poids;

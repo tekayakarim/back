@@ -7,4 +7,5 @@ import com.pfe.main.entity.Voiture;
 @Repository
 public interface VoitureRepository extends JpaRepository<Voiture, Long> {
 Voiture findByMatricule(String matricule);
+Voiture findByid(long id);
 }

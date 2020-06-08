@@ -96,7 +96,7 @@ public void setChefDAAFCin(String chefDAAFCin) {
 
 	public SignupRequest() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public SignupRequest(@NotBlank @Size(min = 3, max = 20) String userName, String role, String nom, String prenom,

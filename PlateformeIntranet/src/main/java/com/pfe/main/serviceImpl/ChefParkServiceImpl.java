@@ -1,7 +1,6 @@
 package com.pfe.main.serviceImpl;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +11,7 @@ import com.pfe.main.entity.DemandeVoiture;
 import com.pfe.main.entity.Voiture;
 import com.pfe.main.repository.ChefParkRepository;
 import com.pfe.main.repository.DemandeVoitureRepository;
+import com.pfe.main.repository.VoitureRepository;
 import com.pfe.main.service.ChefParkService;
 import com.pfe.main.service.VoitureService;
 
@@ -26,6 +26,9 @@ public class ChefParkServiceImpl implements ChefParkService{
 	
 	@Autowired
 	VoitureService voitureService;
+	
+	@Autowired
+	VoitureRepository voitureRepository;
 	
 	@Override
 	public String ajouterVoiture(String userName, Voiture voiture) {
@@ -224,6 +227,26 @@ public class ChefParkServiceImpl implements ChefParkService{
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	@Override
+	public String assginVoiture(long idVoiture, long idDemande) {
+		try {
+			Voiture voi=voitureService.getVoiture(idVoiture);
+			DemandeVoiture dem=demandeVoitureRepository.findByid(idDemande);
+			
+			voi.setDispo(false);
+			voitureRepository.flush();
+			
+			dem.setStatut("closed");
+			dem.setVoiture(voi);
+			demandeVoitureRepository.flush();
+			return "demande assigned";
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		return "fail to assign demande";
 	}
 
 }

@@ -50,7 +50,7 @@ public JwtUser(@NotBlank @Size(max = 20) String userName,
 		this.password = password;
 	}
 public JwtUser() {
-	// TODO Auto-generated constructor stub
+	
 }
 
 	public JwtUser(@NotBlank @Size(max = 20) String userName, Set<JwtRole> roles, String cin, String nom, String prenom,

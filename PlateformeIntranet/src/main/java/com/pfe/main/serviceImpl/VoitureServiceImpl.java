@@ -35,6 +35,12 @@ public class VoitureServiceImpl implements VoitureService {
 		return "fail";
 	}
 
+	@Override
+	public Voiture getVoiture(long id) {
+		
+		return voitureRepository.findByid(id);
+	}
+
 
 
 
