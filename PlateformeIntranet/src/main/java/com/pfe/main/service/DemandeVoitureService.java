@@ -11,4 +11,6 @@ public interface DemandeVoitureService {
 	public List<DemandeVoiture> getAllDemande();
 	public String deleteDemande(long id);
 	public List<DemandeVoiture> getAllDemandeByEmploye(String userName); 
+	public String rendreVoiture(long idDemande);
+	public List<DemandeVoiture> getDemandeInProgressByCurrentUser(String userName); 
 }

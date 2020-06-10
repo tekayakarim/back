@@ -66,5 +66,10 @@ public class ChefParkController {
 						 ,@RequestParam long idDemande) {
 		return chefParkService.assginVoiture(idVoiture, idDemande);
 	}
+	
+	@GetMapping("/getHistoriqueDemandeVoitureByCurrentChef")
+	public List<DemandeVoiture> getHistoriqueDemandeVoitureByCurrentChef(@RequestParam String userName) {
+		return chefParkService.getHistoriqueDemandeVoitureByCurrentChef(userName);
+	}
 }
 

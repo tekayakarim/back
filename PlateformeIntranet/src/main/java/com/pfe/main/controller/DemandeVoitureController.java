@@ -49,4 +49,14 @@ public class DemandeVoitureController {
 	public List<DemandeVoiture> get(@RequestParam String userName) {
 	return 	demandeVoitureService.getAllDemandeByEmploye(userName);
 	} 
+	@PutMapping("/rendreVoiture")
+	public String update(@RequestParam long idDemande) {
+		return demandeVoitureService.rendreVoiture(idDemande);
+	}
+	
+	@GetMapping("/getDemandeInProgressByCurrentUser")
+	public List<DemandeVoiture> getDemandeInProgressByCurrentUser(
+			@RequestParam String userName){
+		return demandeVoitureService.getDemandeInProgressByCurrentUser(userName);
+	}
 }

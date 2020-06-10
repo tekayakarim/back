@@ -16,4 +16,5 @@ List<DemandeVoiture> getAll(String userName);
 String updateDemandeVoiture(long id,String statut);
 List<Voiture> getVoitureDispoByCurrentChefPark(String userName);
 String assginVoiture(long idVoiture,long idDemande);
+List<DemandeVoiture> getHistoriqueDemandeVoitureByCurrentChef(String userName);
 }
