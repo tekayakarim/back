@@ -38,5 +38,11 @@ public class UserServiceImpl implements UserService {
 		return "error: user found";
 	}
 
+	@Override
+	public JwtUser getUserById(long id) {
+		
+		return jwtUserRepository.findByid(id);
+	}
+
 
 }

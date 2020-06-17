@@ -81,7 +81,7 @@ public class AuthController {
 				.collect(Collectors.toList());
 
 		return ResponseEntity.ok(new JwtResponse(jwt, 
-												 null, 
+												 userDetails.getId(), 
 												userDetails.getUsername(), 
 												 roles));
 	}

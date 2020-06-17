@@ -14,7 +14,11 @@ class AuthControllerTest {
 	private MockMvc mockMvc;
 	@Test
 	void testAuthenticateUser() throws Exception {
-		this.mockMvc.perform(MockMvcRequestBuilders.post("/signin").accept(MediaType.APPLICATION_JSON))
+		this.mockMvc
+		.perform(
+				MockMvcRequestBuilders
+				.post("/auth/signin")
+				.accept(MediaType.APPLICATION_JSON))
 		.andExpect(status().isOk());
 	}
 

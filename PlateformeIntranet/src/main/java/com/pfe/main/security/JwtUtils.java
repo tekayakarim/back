@@ -23,6 +23,7 @@ public class JwtUtils {
 
 		return Jwts.builder()
 				.setSubject((userPrincipal.getUsername()))
+				.claim("roles", userPrincipal.getAuthorities())
 				.signWith(SignatureAlgorithm.HS512, jwtSecret)
 				.compact();
 	}

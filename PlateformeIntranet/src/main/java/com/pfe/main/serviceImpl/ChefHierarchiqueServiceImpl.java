@@ -42,7 +42,6 @@ public class ChefHierarchiqueServiceImpl implements ChefHierarchiqueService {
 				if(dem.getEmp().getChefHierarchiqueCin().equals(user.getCin()) 
 						&& !dem.getStatut().equals("accepted")
 						&& !dem.getStatut().equals("denied")
-						&& !dem.getStatut().equals("toCheck")
 						&& !dem.getStatut().equals("inProgress")
 						&& !dem.getStatut().equals("closed"))
 				{

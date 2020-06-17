@@ -37,4 +37,8 @@ public List<JwtUser> getAllUsers() {
 public String deleteUser(@RequestParam long id) {
 	return userService.deleteUser(id);
 }
+@GetMapping("/getCurrentUser")
+public JwtUser getUserEmploye(@RequestParam long id) {
+	return userService.getUserById(id);
+}
 }
