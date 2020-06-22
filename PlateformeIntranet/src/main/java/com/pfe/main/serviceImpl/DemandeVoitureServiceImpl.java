@@ -57,6 +57,7 @@ public class DemandeVoitureServiceImpl implements DemandeVoitureService {
 			Employe emp = employeRepository.findByNom(demandeVoiture.getEmp().getNom());
 			demandeVoiture.setEmp(emp);
 			if(demandeVoitureRepository.findByid(demandeVoiture.getId())!=null) {
+				demandeVoiture.setStatut("new");
 				if(demandeVoitureRepository.save(demandeVoiture)!=null)
 				return "success";
 			}
