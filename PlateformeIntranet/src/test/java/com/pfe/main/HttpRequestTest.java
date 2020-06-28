@@ -33,8 +33,8 @@ public class HttpRequestTest {
 
 	@Test
 	public void getUserEmployeShouldReturnEmploye() throws Exception {
-		assertThat(this.restTemplate.getForObject(/*"http://localhost:" + port 
-				+*/ "/main/user/getCurrentUserEmploye",
+		assertThat(this.restTemplate.getForObject(this.base+"/main/user/getCurrentUserEmploye",
 				JwtUser.class));
 	}
+
 }
