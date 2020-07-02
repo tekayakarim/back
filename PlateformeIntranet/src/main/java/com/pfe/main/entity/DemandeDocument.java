@@ -18,6 +18,19 @@ public class DemandeDocument {
 	@OneToOne
 	private Employe emp;
 	
+	public DemandeDocument() {
+		super();
+		
+	}
+	public DemandeDocument(long id, String description, String type, String statut, String langue, Employe emp) {
+		super();
+		this.id = id;
+		this.description = description;
+		this.type = type;
+		this.statut = statut;
+		this.langue = langue;
+		this.emp = emp;
+	}
 	public String getLangue() {
 		return langue;
 	}

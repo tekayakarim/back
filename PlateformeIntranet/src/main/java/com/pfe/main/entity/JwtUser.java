@@ -39,6 +39,11 @@ public class JwtUser {
  private String password;
 
 
+public JwtUser(@NotBlank @Size(max = 20) String userName,@NotBlank String password) {
+		super();
+		this.userName = userName;
+		this.password=password;
+	}
 public JwtUser(@NotBlank @Size(max = 20) String userName,
 		String cin, String nom, String prenom,
 			@NotBlank String password) {

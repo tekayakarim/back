@@ -4,50 +4,45 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class ChefParkControllerTest {
+class DemandeVoitureControllerTest {
 
 	@Test
-	void testAddVoiture() {
+	void testCreate() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	void testGetAllDemande() {
+	void testGetLong() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	void testGetAllVoiture() {
+	void testUpdateDemandeVoiture() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	void testGetAllVoiturePoidsStringDouble() {
+	void testGetAll() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	void testGetAllVoiturePassagers() {
+	void testDelete() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	void testGetAllVoiturePoidsStringDoubleInt() {
+	void testGetString() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	void testGetVoitureDispoByCurrentChefPark() {
+	void testUpdateLong() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	void testAssign() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testGetHistoriqueDemandeVoitureByCurrentChef() {
+	void testGetDemandeInProgressByCurrentUser() {
 		fail("Not yet implemented");
 	}
 

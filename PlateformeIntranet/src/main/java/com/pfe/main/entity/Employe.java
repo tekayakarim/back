@@ -1,6 +1,8 @@
 package com.pfe.main.entity;
 
 import javax.persistence.Entity;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Employe extends JwtUser{
@@ -23,6 +25,13 @@ public class Employe extends JwtUser{
 		super();
 		
 	}
+	public Employe(@NotBlank @Size(max = 20) String userName,@NotBlank String password) {
+		super(userName,password);
+		
+	}
+	
+
+
 
 
 	
