@@ -27,7 +27,7 @@ class DemandeDocumentControllerTest extends entityConverter{
 	@MockBean
 	DemandeDocumentService demandeDocumentService;
 	
-	
+	private String url="http://localhost:9000/main/demandeDocument";
 	
 	DemandeDocument dem = new DemandeDocument(1
 											 ,"description"
@@ -45,7 +45,7 @@ class DemandeDocumentControllerTest extends entityConverter{
 			this.mockMvc
 			.perform(
 					MockMvcRequestBuilders
-					.post("http://localhost:9000/main/demandeDocument/add")
+					.post(url+"/add")
 					.accept(MediaType.APPLICATION_JSON)
 						.content(super.mapToJson(dem)))
 					.andDo(print())
@@ -65,7 +65,7 @@ class DemandeDocumentControllerTest extends entityConverter{
 			when(demandeDocumentService.getDemande(dem.getId())).thenReturn(dem);
 			
 			this.mockMvc.perform(
-					get("http://localhost:9000/main/demandeDocument/get")
+					get(url+"/get")
 					.param("id",String.valueOf( dem.getId())))
 			.andDo(print())
 			.andExpect(status().isOk())
@@ -86,7 +86,7 @@ class DemandeDocumentControllerTest extends entityConverter{
 			this.mockMvc
 			.perform(
 					MockMvcRequestBuilders
-					.put("http://localhost:9000/main/demandeDocument/update")
+					.put(url+"/update")
 					.accept(MediaType.APPLICATION_JSON)
 						.content(super.mapToJson(dem)))
 					.andDo(print())
@@ -101,8 +101,14 @@ class DemandeDocumentControllerTest extends entityConverter{
 
 	@Test
 	void testGetAll() {
+		
+		
+		
 		try {
-			this.mockMvc.perform(get("http://localhost:9000/main/demandeDocument/getAll"))
+			
+			when(demandeDocumentService.getAllDemande());
+			
+			this.mockMvc.perform(get(url+"/getAll"))
 			.andDo(print())
 			.andExpect(status().isOk())
 			.andExpect(content().contentType(MediaType.APPLICATION_JSON));
@@ -121,9 +127,8 @@ class DemandeDocumentControllerTest extends entityConverter{
 			this.mockMvc
 			.perform(
 					MockMvcRequestBuilders
-					.put("http://localhost:9000/main/demandeDocument/delete")
-					.accept(MediaType.APPLICATION_JSON)
-						.content(super.mapToJson(dem)))
+					.delete(url+"/delete")
+					.param("id", String.valueOf(dem.getId())))
 					.andDo(print())
 					.andExpect(status().isOk())
 					.andExpect(content()
@@ -137,7 +142,9 @@ class DemandeDocumentControllerTest extends entityConverter{
 	@Test
 	void testGetByCurrentUser() {
 		try {
-			this.mockMvc.perform(get("http://localhost:9000/main/demandeDocument/getByCurrentUser")
+			when(demandeDocumentService.getAllDemandeByEmploye(dem.getEmp().getUserName()));
+			
+			this.mockMvc.perform(get(url+"/getByCurrentUser")
 					.param("userName", dem.getEmp().getUserName()))
 			.andDo(print())
 			.andExpect(status().isOk())

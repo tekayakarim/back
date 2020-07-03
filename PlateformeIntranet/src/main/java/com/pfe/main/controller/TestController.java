@@ -53,7 +53,7 @@ public class TestController {
     }*/
 	@Autowired
 	MailService mailService;
-@PostMapping("sendMail")
+@PostMapping("/sendMail")
 public String send(@RequestBody MailModel mail ) {
 return 	mailService.sendSimpleMessage(mail);
 }

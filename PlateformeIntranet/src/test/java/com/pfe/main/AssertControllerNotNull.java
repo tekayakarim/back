@@ -25,6 +25,18 @@ public class AssertControllerNotNull {
 	@Autowired
 	private UserController userController;
 	
+	@Autowired
+	private AgentDAAFController agentDAAFController;
+	
+	@Autowired
+	private ChefDAAFController chefDAAFController;
+	
+	@Autowired
+	private ChefParkController chefParkController;
+	
+	@Autowired
+	private DemandeVoitureController demandeVoitureController;
+	
 	@Test
 	public void contexLoads() throws Exception {
 		//authController
@@ -42,6 +54,17 @@ public class AssertControllerNotNull {
 		//userController
 		assertThat(userController).isNotNull();
 		
+		//agentDAAFController
+		assertThat(agentDAAFController).isNotNull();
+		
+		//chefDAAFController
+		assertThat(chefDAAFController).isNotNull();
+		
+		//chefParkController
+		assertThat(chefParkController).isNotNull();
+		
+		//demandeVoitureController
+		assertThat(demandeVoitureController).isNotNull();
 	}
 
 }
