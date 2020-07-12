@@ -34,7 +34,9 @@ public class ChefParkServiceImpl implements ChefParkService{
 	public String ajouterVoiture(String userName, Voiture voiture) {
 		
 		try {
-			System.out.println(voitureService.addVoiture(voiture));
+			if (voitureService.addVoiture(voiture).equals("fail")) {
+				return "fail";
+			}
 			
 			ChefPark chef=chefParkRepository.findByUserName(userName);
 			if(chef.getListVoiture()==null)

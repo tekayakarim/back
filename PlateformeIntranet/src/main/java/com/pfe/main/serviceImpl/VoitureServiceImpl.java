@@ -15,8 +15,13 @@ public class VoitureServiceImpl implements VoitureService {
 	public String addVoiture(Voiture voiture) {
 		
 		try {
+if (voitureRepository.findByMatricule(voiture.getMatricule())!=null) {
+	return "fail";
+}
 			voitureRepository.save(voiture);
 			return "voiture added";
+			
+		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
