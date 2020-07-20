@@ -2,6 +2,8 @@ package com.pfe.main.serviceImpl;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -125,10 +127,13 @@ public class DemandeVoitureServiceImpl implements DemandeVoitureService {
 			voi.setDispo(true);
 			voitureRepository.flush();
 			
+			 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
+   LocalDateTime now = LocalDateTime.now();  
+   System.out.println(dtf.format(now));  
 			
-	 DateFormat format = new SimpleDateFormat("yyyy/MM/dd ");
-				Date date = new Date();
-				dem.setDateRecuperation(format.format(date));
+	/* DateFormat format = new SimpleDateFormat("yyyy/MM/dd ");
+				Date date = new Date();*/
+				dem.setDateRecuperation(dtf.format(now));
 				dem.setStatut("closed");
 				
 			demandeVoitureRepository.flush();
