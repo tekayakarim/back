@@ -45,13 +45,13 @@ public class PlateformeIntranetApplication {
 					jwtRoleRepository.save(new JwtRole(JwtERole.ROLE_CHEFHIERARCHIQUE));
 					jwtRoleRepository.save(new JwtRole(JwtERole.ROLE_CHEFPARK));
 					jwtRoleRepository.save(new JwtRole(JwtERole.ROLE_EMPLOYE));
-						
+					jwtRoleRepository.save(new JwtRole(JwtERole.ROLE_ADMIN));	
 				
 				}
 				if(jwtUserRepository.findAll().size()==0)
 				{
 					Set<JwtRole> roles = new HashSet<JwtRole>();
-					JwtRole adminRole = new JwtRole(JwtERole.ROLE_ADMIN);
+					JwtRole adminRole = jwtRoleRepository.findByname(JwtERole.ROLE_ADMIN);
 					roles.add(adminRole);
 
 					JwtUser user=new JwtUser();
